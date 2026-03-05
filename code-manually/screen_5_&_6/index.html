@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <aside class="sidebar">
+        <div class="logo">
+          <div class="logo-icon">
+            <img src="../assets/img/logo.png" alt="" />
+          </div>
+          <div class="logo-group">
+            <div class="logo-text">PTIT</div>
+            <div class="logo-sub">ADMIN PORTAL</div>
+          </div>
+        </div>
+        <nav class="nav-menu">
+          <a href="#" class="nav-item active" data-target="dashboard-view">
+            <span class="icon">📊</span> Tổng quan
+          </a>
+          <a href="#" class="nav-item"> <span class="icon">📁</span> Kỳ thi </a>
+          <a href="#" class="nav-item">
+            <span class="icon">👥</span> Sinh viên
+          </a>
+
+          <a href="#" class="nav-item" data-target="statistics-view">
+            <span class="icon">📈</span> Thống kê
+          </a>
+        </nav>
+        <div class="user-profile">
+          <figure class="user-img">
+            <img
+              src="https://ui-avatars.com/api/?name=Admin&background=random"
+              alt="Admin"
+            />
+          </figure>
+          <div class="info">
+            <div class="name">TS. Nguyễn Văn A</div>
+            <div class="role">Quản trị viên cấp cao</div>
+          </div>
+        </div>
+        <button class="logout-btn">Đăng xuất</button>
+      </aside>
+
+      <main class="main-content">
+        <div id="dashboard-view" class="view-section active">
+          <header class="top-header">
+            <div>
+              <h2>Hệ thống Quản trị</h2>
+              <p class="subtitle">Cập nhật lần cuối: 10:45 AM hôm nay</p>
+            </div>
+            <div class="header-actions">
+              <span>🔍</span>
+              <input
+                type="text"
+                class="search-bar"
+                placeholder="Tìm kiếm nhanh..."
+              />
+            </div>
+          </header>
+
+          <div class="stats-grid" style="padding-top: 80px">
+            <div class="stat-card">
+              <div class="stat-title">TỔNG SINH VIÊN</div>
+              <div class="stat-value">2,450</div>
+              <div class="stat-trend positive">↗ 12% so với tháng trước</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">TỔNG KỲ THI</div>
+              <div class="stat-value">86</div>
+              <div class="stat-trend positive">+ 4 mới tuần này</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">ĐANG THI</div>
+              <div class="stat-value">156</div>
+              <div class="stat-trend live">Live hoạt động ngay bây giờ</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">ĐIỂM TRUNG BÌNH</div>
+              <div class="stat-value">7.64</div>
+              <div class="stat-trend neutral">Ổn định kỳ này</div>
+            </div>
+          </div>
+
+          <div class="dashboard-layout">
+            <div class="table-container">
+              <div class="table-header">
+                <div class="header-wrapper">
+                  <h3>Bài thi nộp gần đây</h3>
+                  <p>
+                    Cập nhật thời gian thực từ các bài kiểm tra đang diễn ra
+                  </p>
+                </div>
+                <a href="#" class="view-all">Xem tất cả →</a>
+              </div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>SINH VIÊN</th>
+                    <th>MÔN THI</th>
+                    <th>THỜI GIAN NỘP</th>
+                    <th>ĐIỂM SỐ</th>
+                    <th>TRẠNG THÁI</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="first-td">
+                      <figure>
+                        <img src="../assets/img/logo.png" alt="" />
+                      </figure>
+                      <div>
+                        <span>Trần Minh Tuấn</span>
+                        <small>B20DCCN001</small>
+                      </div>
+                    </td>
+                    <td class="other-td">
+                      <div>
+                        <span>Lập trình Hướng đối tượng</span
+                        ><small>INT1340</small>
+                      </div>
+                    </td>
+                    <td class="other-td"><div>2 phút trước</div></td>
+                    <td class="other-td td-middle">
+                      <div><strong>9.5</strong></div>
+                    </td>
+                    <td class="other-td td-middle">
+                      <div><span class="badge success">Đạt</span></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="first-td">
+                      <figure>
+                        <img src="../assets/img/logo.png" alt="" />
+                      </figure>
+                      <div>
+                        <span>Nguyễn Thị Mai</span><small>B20DCCN045</small>
+                      </div>
+                    </td>
+                    <td class="other-td">
+                      <div>
+                        <span>Hệ quản trị CSDL</span><small>INT1332</small>
+                      </div>
+                    </td>
+                    <td class="other-td"><div>15 phút trước</div></td>
+                    <td class="other-td td-middle">
+                      <div><strong>8.0</strong></div>
+                    </td>
+                    <td class="other-td td-middle">
+                      <div><span class="badge success">Đạt</span></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="first-td">
+                      <figure>
+                        <img src="../assets/img/logo.png" alt="" />
+                      </figure>
+                      <div>
+                        <span>Lê Văn Hùng</span><small>B20DCCN112</small>
+                      </div>
+                    </td>
+                    <td class="other-td">
+                      <div><span>Giải tích 1</span><small>INT1350</small></div>
+                    </td>
+                    <td class="other-td"><div>42 phút trước</div></td>
+                    <td class="other-td td-middle">
+                      <div><strong>4.5</strong></div>
+                    </td>
+                    <td class="other-td td-middle">
+                      <div><span class="badge danger">Thi lại</span></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="first-td">
+                      <figure>
+                        <img src="../assets/img/logo.png" alt="" />
+                      </figure>
+                      <div><span>Đỗ Quang</span><small>B20DCCN234</small></div>
+                    </td>
+                    <td class="other-td">
+                      <div><span>An toàn mạng</span><small>INT1450</small></div>
+                    </td>
+                    <td class="other-td"><div>1 giờ trước</div></td>
+                    <td class="other-td td-middle">
+                      <div><strong>--</strong></div>
+                    </td>
+                    <td class="other-td td-middle">
+                      <div><span class="badge warning">Chờ xử lý</span></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="side-panel">
+              <div class="quick-actions-card">
+                <h3>⚡ Thao tác nhanh</h3>
+                <button class="btn-action" id="btn-open-create-exam">
+                  ⊕ Tạo kỳ thi mới
+                </button>
+                <button class="btn-action" id="btn-open-add-student">
+                  👤 Thêm sinh viên
+                </button>
+              </div>
+              <div class="calendar-card">
+                <div class="calendar-header">
+                  <h3>Tháng 3, 2026</h3>
+                  <div>
+                    <button class="btn-icon">◀</button>
+                    <button class="btn-icon">▶</button>
+                  </div>
+                </div>
+                <div class="calendar-weekdays">
+                  <span>CN</span><span>T2</span><span>T3</span><span>T4</span
+                  ><span>T5</span><span>T6</span><span>T7</span>
+                </div>
+                <div class="calendar-days">
+                  <!-- Dòng 1: trống (CN) và các ngày 1-6 (T2 - T7) -->
+                  <span></span><span>1</span><span>2</span><span>3</span
+                  ><span>4</span><span>5</span><span class="highlight">6</span>
+                  <!-- Dòng 2: 7-13 -->
+                  <span>7</span><span>8</span><span>9</span><span>10</span
+                  ><span>11</span><span>12</span><span>13</span>
+                  <!-- Dòng 3: 14-20 (ngày 20 highlight) -->
+                  <span>14</span><span>15</span><span>16</span><span>17</span
+                  ><span>18</span><span>19</span><span>20</span>
+                  <!-- Dòng 4: 21-27 (ngày 24 highlight) -->
+                  <span>21</span><span>22</span><span>23</span
+                  ><span class="upcoming">24</span><span>25</span><span>26</span
+                  ><span>27</span>
+                  <!-- Dòng 5: 28-31 và ba ô trống cuối -->
+                  <span>28</span><span>29</span><span>30</span><span>31</span
+                  ><span></span><span></span><span></span>
+                </div>
+                <div class="calendar-events">
+                  <div class="event-item">
+                    <span class="event-dot"></span> Kiểm tra Giải tích I
+                    <span class="event-tag">Hôm nay</span>
+                  </div>
+                  <div class="event-item">
+                    <span class="event-dot"></span> Giữa kỳ OOP
+                    <span class="event-tag">24/10</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="statistics-view" class="view-section" style="display: none">
+          <header class="top-header">
+            <div>
+              <h2>Thống kê & Phân tích Dữ liệu</h2>
+              <p class="subtitle">
+                Tổng hợp hiệu suất và xu hướng học tập toàn hệ thống.
+              </p>
+            </div>
+            <div class="header-actions-statistics">
+              <button class="btn-outline" id="btn-export-pdf">
+                📄 Xuất PDF
+              </button>
+              <button class="btn-outline" id="btn-export-excel">
+                📊 Xuất Excel
+              </button>
+            </div>
+          </header>
+
+          <div class="content-wrapper">
+            <div class="filter-bar">
+              <select>
+                <option>Kỳ thi: Cuối kỳ 2023 - Đợt 1</option>
+                <option>Kỳ thi: Cuối kỳ 2023 - Đợt 2</option>
+                <option>Kỳ thi: Cuối kỳ 2023 - Đợt 3</option>
+                <option>Kỳ thi: Cuối kỳ 2023 - Đợt 4</option>
+              </select>
+              <select>
+                <option>Thời gian: 30 ngày gần đây</option>
+                <option>Thời gian: 60 ngày gần đây</option>
+                <option>Thời gian: 90 ngày gần đây</option>
+                <option>Thời gian: 100 ngày gần đây</option>
+              </select>
+              <select>
+                <option>Khoa / Lớp: Khoa CNTT 1</option>
+                <option>Khoa / Lớp: Khoa CNTT 2</option>
+                <option>Khoa / Lớp: Khoa CNTT 3</option>
+                <option>Khoa / Lớp: Khoa CNTT 4</option>
+              </select>
+            </div>
+
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-title">TỔNG SINH VIÊN DỰ THI</div>
+                <div class="stat-value">1,245</div>
+                <div class="stat-trend positive">↗ +5.2% so với kỳ trước</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">ĐIỂM TRUNG BÌNH</div>
+                <div class="stat-value">7.65</div>
+                <div class="stat-trend negative">↘ -1.5% so với trung bình</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">TỶ LỆ HOÀN THÀNH</div>
+                <div class="stat-value">98.2%</div>
+                <div class="stat-trend positive">Cao xuất sắc</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-title">BÀI THI ĐẠT GIỎI</div>
+                <div class="stat-value">342</div>
+                <div class="stat-trend positive">27.5% tổng số bài</div>
+              </div>
+            </div>
+
+            <div class="charts-row">
+              <div class="chart-card">
+                <h3>Phân phối điểm số</h3>
+                <p class="chart-subtitle">
+                  Phổ điểm kỳ thi Cuối kỳ 2023 - Đợt 1
+                </p>
+                <div class="chart-container">
+                  <div class="css-bar-chart">
+                    <div class="bar-col">
+                      <div class="bar" style="height: 10%"></div>
+                      <span>0-2</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar" style="height: 25%"></div>
+                      <span>2-4</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar" style="height: 40%"></div>
+                      <span>4-6</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar" style="height: 80%"></div>
+                      <span>6-8</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar" style="height: 50%"></div>
+                      <span>8-9</span>
+                    </div>
+                    <div class="bar-col">
+                      <div class="bar" style="height: 20%"></div>
+                      <span>9-10</span>
+                    </div>
+                  </div>
+                  <div class="chart-legend">
+                    <span class="legend-item"
+                      ><span
+                        class="legend-dot"
+                        style="background: #c41d23"
+                      ></span>
+                      Thực tế</span
+                    >
+                    <span class="legend-item"
+                      ><span
+                        class="legend-dot"
+                        style="background: #fbbf24"
+                      ></span>
+                      Trung bình</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="chart-card">
+                <h3>Tỷ lệ tham gia</h3>
+                <p class="chart-subtitle">7 ngày gần nhất</p>
+                <div class="attendance-chart">
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 80%"></div>
+                    <span>T2</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 65%"></div>
+                    <span>T3</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 90%"></div>
+                    <span>T4</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 70%"></div>
+                    <span>T5</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 85%"></div>
+                    <span>T6</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 60%"></div>
+                    <span>T7</span>
+                  </div>
+                  <div class="attendance-bar-col">
+                    <div class="attendance-bar" style="height: 50%"></div>
+                    <span>CN</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-container" style="margin-top: 20px">
+              <div class="table-header">
+                <h3>Chi tiết kết quả thi</h3>
+              </div>
+              <table class="data-table result-table">
+                <thead>
+                  <tr>
+                    <th>MÃ SV</th>
+                    <th>HỌ VÀ TÊN</th>
+                    <th>LỚP</th>
+                    <th>SỐ BÀI THI</th>
+                    <th>ĐIỂM TB</th>
+                    <th>XẾP LOẠI</th>
+                    <th>THAO TÁC</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>B19DCCN123</td>
+                    <td>NL Nguyễn Văn Linh</td>
+                    <td>D19CQCN01</td>
+                    <td>5</td>
+                    <td>9.25</td>
+                    <td><span class="badge success">Xuất sắc</span></td>
+                    <td style="text-align: center">
+                      <button class="btn-icon">👁️</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B19DCCN456</td>
+                    <td>TH Trần Thị Hoa</td>
+                    <td>D19CQVT02</td>
+                    <td>5</td>
+                    <td>8.80</td>
+                    <td><span class="badge success">Giỏi</span></td>
+                    <td style="text-align: center">
+                      <button class="btn-icon">👁️</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B19DCCN789</td>
+                    <td>LM Lê Văn Minh</td>
+                    <td>D19CQCN01</td>
+                    <td>4</td>
+                    <td>7.65</td>
+                    <td><span class="badge warning">Khá</span></td>
+                    <td style="text-align: center">
+                      <button class="btn-icon">👁️</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>B19DCCN282</td>
+                    <td>HQ Hoàng Quốc Bảo</td>
+                    <td>D19CQMR01</td>
+                    <td>3</td>
+                    <td>4.50</td>
+                    <td><span class="badge danger">Cảnh báo</span></td>
+                    <td style="text-align: center">
+                      <button class="btn-icon">👁️</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="pagination">
+                <div class="pagination-info">
+                  Hiển thị 1-4 trong 1245 kết quả
+                </div>
+                <div class="pagination-controls">
+                  <button class="pagination-btn active">1</button>
+                  <button class="pagination-btn">2</button>
+                  <button class="pagination-btn">3</button>
+                  <button class="pagination-btn">4</button>
+                  <span class="pagination-dots">...</span>
+                  <button class="pagination-btn">50</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-overlay" id="all-submissions-modal">
+      <div class="modal-container">
+        <div class="modal-header">
+          <h3>Tất cả bài thi nộp gần đây</h3>
+          <button class="modal-close" id="close-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>SINH VIÊN</th>
+                <th>MÔN THI</th>
+                <th>THỜI GIAN NỘP</th>
+                <th>ĐIỂM SỐ</th>
+                <th>TRẠNG THÁI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div>
+                    <span>Trần Minh Tuấn</span><small>B20DCCN001</small>
+                  </div>
+                </td>
+                <td class="other-td">
+                  <div>
+                    <span>Lập trình Hướng đối tượng</span><small>INT1340</small>
+                  </div>
+                </td>
+                <td class="other-td"><div>2 phút trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>9.5</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div>
+                    <span>Nguyễn Thị Mai</span><small>B20DCCN045</small>
+                  </div>
+                </td>
+                <td class="other-td">
+                  <div><span>Hệ quản trị CSDL</span><small>INT1332</small></div>
+                </td>
+                <td class="other-td"><div>15 phút trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>8.0</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Lê Văn Hùng</span><small>B20DCCN112</small></div>
+                </td>
+                <td class="other-td">
+                  <div><span>Giải tích 1</span><small>INT1350</small></div>
+                </td>
+                <td class="other-td"><div>42 phút trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>4.5</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge danger">Thi lại</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Đỗ Quang</span><small>B20DCCN234</small></div>
+                </td>
+                <td class="other-td">
+                  <div><span>An toàn mạng</span><small>INT1450</small></div>
+                </td>
+                <td class="other-td"><div>1 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>--</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge warning">Chờ xử lý</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div>
+                    <span>Hoàng Quốc Bảo</span><small>B19DCCN282</small>
+                  </div>
+                </td>
+                <td class="other-td">
+                  <div><span>Cấu trúc dữ liệu</span><small>INT1306</small></div>
+                </td>
+                <td class="other-td"><div>2 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>7.5</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Lê Văn Minh</span><small>B19DCCN789</small></div>
+                </td>
+                <td class="other-td">
+                  <div>
+                    <span>Kiến trúc máy tính</span><small>INT1311</small>
+                  </div>
+                </td>
+                <td class="other-td"><div>3 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>9.0</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Lê Văn Minh</span><small>B19DCCN789</small></div>
+                </td>
+                <td class="other-td">
+                  <div>
+                    <span>Kiến trúc máy tính</span><small>INT1311</small>
+                  </div>
+                </td>
+                <td class="other-td"><div>3 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>9.0</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Lê Văn Minh</span><small>B19DCCN789</small></div>
+                </td>
+                <td class="other-td">
+                  <div>
+                    <span>Kiến trúc máy tính</span><small>INT1311</small>
+                  </div>
+                </td>
+                <td class="other-td"><div>3 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>9.0</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+              <tr>
+                <td class="first-td">
+                  <figure><img src="../assets/img/logo.png" alt="" /></figure>
+                  <div><span>Lê Văn Minh</span><small>B19DCCN789</small></div>
+                </td>
+                <td class="other-td">
+                  <div>
+                    <span>Kiến trúc máy tính</span><small>INT1311</small>
+                  </div>
+                </td>
+                <td class="other-td"><div>3 giờ trước</div></td>
+                <td class="other-td td-middle">
+                  <div><strong>9.0</strong></div>
+                </td>
+                <td class="other-td td-middle">
+                  <div><span class="badge success">Đạt</span></div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="student-detail-modal">
+      <div class="modal-container" style="max-width: 600px">
+        <div class="modal-header">
+          <h3>Hồ sơ & Kết quả chi tiết</h3>
+          <button class="modal-close" id="close-student-modal-btn">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" style="padding-top: 25px">
+          <div class="student-profile-header">
+            <img src="../assets/img/logo.png" alt="Avatar" />
+            <div>
+              <h2 style="margin: 0; font-size: 1.3rem; color: var(--text-main)">
+                Nguyễn Văn Linh
+              </h2>
+              <p
+                style="
+                  margin: 5px 0 0 0;
+                  color: var(--text-muted);
+                  font-size: 0.9rem;
+                "
+              >
+                Mã SV: B19DCCN123 • Lớp: D19CQCN01
+              </p>
+            </div>
+          </div>
+
+          <div class="student-detail-info">
+            <div class="detail-item">
+              <span class="detail-label">Email liên hệ</span>
+              <span class="detail-value">linh.nv@st.ptit.edu.vn</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Số điện thoại</span>
+              <span class="detail-value">0987.654.321</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Số bài thi đã làm</span>
+              <span class="detail-value">5 bài thi</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Tổng thời gian thi</span>
+              <span class="detail-value">245 phút</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Điểm trung bình (GPA)</span>
+              <span
+                class="detail-value"
+                style="color: #166534; font-weight: bold"
+                >9.25 / 10</span
+              >
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Hoạt động gần nhất</span>
+              <span class="detail-value">Hôm nay, 09:30 AM</span>
+            </div>
+          </div>
+
+          <div
+            style="
+              margin-top: 25px;
+              display: flex;
+              gap: 10px;
+              justify-content: flex-end;
+            "
+          >
+            <button class="btn-outline">Gửi cảnh báo</button>
+            <button
+              class="btn-ptit"
+              style="
+                background: var(--ptit-red);
+                color: white;
+                border: none;
+                padding: 8px 15px;
+                border-radius: 5px;
+                cursor: pointer;
+              "
+            >
+              Xuất bảng điểm PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="create-exam-modal">
+      <div class="modal-container" style="max-width: 900px; max-height: 90vh">
+        <div class="modal-header">
+          <h3>Tạo kỳ thi mới</h3>
+          <button class="modal-close" id="close-exam-modal-btn">&times;</button>
+        </div>
+        <div class="modal-body" style="padding-top: 20px">
+          <h4 class="section-title">1. Thông tin kỳ thi</h4>
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Tên kỳ thi <span style="color: red">*</span></label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="VD: Cuối kỳ Lập trình Web"
+              />
+            </div>
+            <div class="form-group">
+              <label>Loại kỳ thi</label>
+              <select class="form-control">
+                <option value="free">
+                  Luyện tập tự do (Không giới hạn thời gian)
+                </option>
+                <option value="strict">
+                  Thi chính thức (Thời gian cụ thể)
+                </option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column: span 2">
+              <label>Mô tả kỳ thi</label>
+              <textarea
+                class="form-control"
+                rows="2"
+                placeholder="Nhập mô tả ngắn gọn..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-top: 20px;
+            "
+          >
+            <h4 class="section-title" style="margin: 0">
+              2. Danh sách câu hỏi
+            </h4>
+            <div style="display: flex; gap: 10px">
+              <input
+                type="file"
+                id="excel-file-input"
+                accept=".xlsx, .xls"
+                style="display: none"
+              />
+              <button
+                class="btn-outline"
+                id="btn-import-excel"
+                style="padding: 6px 12px; font-size: 0.85rem"
+              >
+                📁 Nhập từ Excel
+              </button>
+              <button
+                class="btn-ptit"
+                id="btn-add-question"
+                style="padding: 6px 12px; font-size: 0.85rem"
+              >
+                + Thêm câu hỏi thủ công
+              </button>
+            </div>
+          </div>
+
+          <div id="questions-container" style="margin-top: 15px">
+            <div class="question-card">
+              <div class="question-header">
+                <strong>Câu hỏi 1</strong>
+                <button class="btn-delete-q">🗑 Xóa</button>
+              </div>
+              <textarea
+                class="form-control"
+                rows="2"
+                placeholder="Nhập nội dung câu hỏi..."
+              ></textarea>
+              <div class="answers-list">
+                <div class="answer-item">
+                  <input type="radio" name="q1_correct" checked />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Đáp án A"
+                    value="Đáp án A"
+                  />
+                </div>
+                <div class="answer-item">
+                  <input type="radio" name="q1_correct" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Đáp án B"
+                  />
+                </div>
+                <div class="answer-item">
+                  <input type="radio" name="q1_correct" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Đáp án C"
+                  />
+                </div>
+                <div class="answer-item">
+                  <input type="radio" name="q1_correct" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Đáp án D"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              text-align: right;
+              margin-top: 20px;
+              border-top: 1px solid var(--border-color);
+              padding-top: 15px;
+            "
+          >
+            <button
+              class="btn-ptit"
+              id="btn-save-exam"
+              style="font-size: 1rem; padding: 10px 25px"
+            >
+              Lưu kỳ thi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="add-student-modal">
+      <div class="modal-container" style="max-width: 500px">
+        <div class="modal-header">
+          <h3>Thêm sinh viên mới</h3>
+          <button class="modal-close" id="close-add-student-modal-btn">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" style="padding-top: 20px">
+          <div class="form-group" style="margin-bottom: 15px">
+            <label>Mã Sinh Viên (MSSV) <span style="color: red">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="VD: B20DCCN001"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 15px">
+            <label>Họ và Tên <span style="color: red">*</span></label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="VD: Nguyễn Văn A"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 15px">
+            <label>Lớp</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="VD: D20CQCN01-B"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 25px">
+            <label>Email liên hệ</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="VD: a.nv@st.ptit.edu.vn"
+            />
+          </div>
+
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <button
+              class="btn-outline"
+              style="font-size: 0.85rem"
+              onclick="document.getElementById('excel-file-input').click()"
+            >
+              📁 Import danh sách Excel
+            </button>
+            <button class="btn-ptit" id="btn-save-student">
+              Lưu sinh viên
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
