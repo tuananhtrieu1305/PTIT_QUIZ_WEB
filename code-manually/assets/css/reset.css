@@ -86,7 +86,8 @@ video {
   font: inherit;
   vertical-align: baseline;
 }
-/* HTML5 display-role reset for older browsers */
+
+
 article,
 aside,
 details,
@@ -100,17 +101,21 @@ nav,
 section {
   display: block;
 }
+
 body {
   line-height: 1;
 }
+
 ol,
 ul {
   list-style: none;
 }
+
 blockquote,
 q {
   quotes: none;
 }
+
 blockquote:before,
 blockquote:after,
 q:before,
@@ -118,15 +123,18 @@ q:after {
   content: "";
   content: none;
 }
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
+
 img,
 picture,
 svg,
@@ -134,18 +142,21 @@ video {
   display: block;
   max-width: 100%;
 }
+
 input,
 select,
 textarea {
   background-color: transparent;
   outline: none;
 }
+
 button {
   cursor: pointer;
   background-color: transparent;
   outline: none;
   border: none;
 }
+
 input,
 select,
 textarea,
@@ -157,13 +168,14 @@ label {
   font-size: inherit;
   -webkit-tap-highlight-color: transparent;
 }
+
 body,
 html {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  overflow: hidden;
 }
+
 iframe {
   border: none;
   width: 100%;

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng ký - Học viện Công nghệ Bưu chính Viễn thông</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="login-body">
+    <div class="login-container">
+        
+        <div class="login-banner">
+            <div class="banner-content">
+                <div class="banner-logo">
+                    <div class="logo-box">
+                        <img src="../assets/img/logo.png" alt="PTIT Logo">
+                    </div>
+                    <span>HỌC VIỆN CÔNG NGHỆ BƯU CHÍNH VIỄN THÔNG</span>
+                </div>
+                <h1>Tạo tài khoản<br>Dễ dàng & Nhanh chóng</h1>
+                <p>Đăng ký ngay để tham gia hệ thống thi trực tuyến.<br>Tiếp cận hàng trăm đề thi và tài liệu ôn tập
+                    chất lượng cao.</p>
+
+                <div class="contact-info">
+                    <span class="contact-tag">📞 024.3756.2186</span>
+                    <span class="contact-tag">📧 ctsv@ptit.edu.vn</span>
+                    <span class="contact-tag">🌐 ptit.edu.vn</span>
+                </div>
+
+                <div class="footer-text">
+                    PTIT EXAM - Nền tảng đánh giá năng lực V1.0.0
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="login-form-container">
+            <div class="form-wrapper" style="max-width: 460px;">
+                <div class="form-header">
+                    <img src="../assets/img/logo.png" alt="Logo" class="form-logo">
+                    <h2>Tạo tài khoản mới</h2>
+                    <p>Điền thông tin bên dưới để đăng ký</p>
+                </div>
+
+                <form id="register-form" class="login-form" novalidate>
+                    
+                    <div class="form-group">
+                        <label>Họ và tên <span class="required">*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">👤</span>
+                            <input type="text" id="reg-name" placeholder="Nguyễn Văn A" required>
+                        </div>
+                        <div class="field-error" id="err-name"></div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Mã sinh viên <span class="required">*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🎓</span>
+                            <input type="text" id="reg-mssv" placeholder="B20DCCN001" required>
+                        </div>
+                        <div class="field-error" id="err-mssv"></div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Email <span class="required">*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">📧</span>
+                            <input type="email" id="reg-email" placeholder="sv@st.ptit.edu.vn" required>
+                        </div>
+                        <div class="field-error" id="err-email"></div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Mật khẩu <span class="required">*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="reg-pass" placeholder="Ít nhất 8 ký tự" required>
+                            <span class="input-icon-right" id="toggle-pass" style="cursor:pointer">👁️</span>
+                        </div>
+                        <div class="password-strength" id="strength-bar" style="display:none">
+                            <div class="strength-fill" id="strength-fill"></div>
+                        </div>
+                        <div class="field-error" id="err-pass"></div>
+                    </div>
+
+                    
+                    <div class="form-group">
+                        <label>Xác nhận mật khẩu <span class="required">*</span></label>
+                        <div class="input-group">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="reg-confirm" placeholder="Nhập lại mật khẩu" required>
+                        </div>
+                        <div class="field-error" id="err-confirm"></div>
+                    </div>
+
+                    
+                    <label class="remember-me" style="margin-bottom:16px; font-size:0.88rem">
+                        <input type="checkbox" id="agree-terms">
+                        Tôi đồng ý với <a href="#" style="color:var(--ptit-red)">Điều khoản dịch vụ</a> và <a href="#"
+                            style="color:var(--ptit-red)">Chính sách bảo mật</a>
+                    </label>
+                    <div class="field-error" id="err-terms"></div>
+
+                    <button type="submit" class="btn-primary">Đăng ký ngay ➔</button>
+
+                    <div class="form-footer" style="margin-top:20px; text-align:center">
+                        Đã có tài khoản? <a href="./login.html">Đăng nhập ngay</a>
+                    </div>
+                </form>
+
+                
+                <div id="success-msg" style="display:none; text-align:center; padding: 20px 0">
+                    <div style="font-size:3rem; margin-bottom:12px">🎉</div>
+                    <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:8px; color:#16a34a">Đăng ký thành công!
+                    </h3>
+                    <p style="color:var(--ptit-red--muted, #6b7280); margin-bottom:20px; font-size:0.95rem">Tài khoản
+                        của bạn đã được tạo. Đang chuyển đến trang chủ...</p>
+                    <a href="./home.html" class="btn-primary" style="display:inline-flex; text-decoration:none">Vào
+                        trang chủ ➔</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .field-error {
+            font-size: 0.78rem;
+            color: #dc2626;
+            margin-top: 4px;
+            min-height: 16px;
+        }
+
+        .password-strength {
+            height: 4px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+
+        .strength-fill {
+            height: 100%;
+            transition: width 0.3s, background 0.3s;
+        }
+
+        .input-group input.invalid {
+            border-color: #dc2626;
+        }
+
+        .input-group input.valid {
+            border-color: #16a34a;
+        }
+    </style>
+
+    <script>
+        
+        document.getElementById('toggle-pass').addEventListener('click', () => {
+            const inp = document.getElementById('reg-pass');
+            inp.type = inp.type === 'password' ? 'text' : 'password';
+        });
+
+        
+        document.getElementById('reg-pass').addEventListener('input', function () {
+            const val = this.value;
+            const bar = document.getElementById('strength-bar');
+            const fill = document.getElementById('strength-fill');
+            if (!val) { bar.style.display = 'none'; return; }
+            bar.style.display = 'block';
+            let score = 0;
+            if (val.length >= 8) score++;
+            if (/[A-Z]/.test(val)) score++;
+            if (/[0-9]/.test(val)) score++;
+            if (/[^A-Za-z0-9]/.test(val)) score++;
+            const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e'];
+            fill.style.width = (score / 4 * 100) + '%';
+            fill.style.background = colors[score - 1] || '#ef4444';
+        });
+
+        
+        document.getElementById('register-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            let ok = true;
+
+            const name = document.getElementById('reg-name').value.trim();
+            const mssv = document.getElementById('reg-mssv').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const pass = document.getElementById('reg-pass').value;
+            const confirm = document.getElementById('reg-confirm').value;
+            const agreed = document.getElementById('agree-terms').checked;
+
+            const setErr = (id, msg) => {
+                document.getElementById(id).textContent = msg;
+                if (msg) ok = false;
+            };
+
+            setErr('err-name', !name ? 'Vui lòng nhập họ và tên.' : '');
+            setErr('err-mssv', !mssv ? 'Vui lòng nhập mã sinh viên.' : '');
+            setErr('err-email', !email || !email.includes('@') ? 'Email không hợp lệ.' : '');
+            setErr('err-pass', pass.length < 8 ? 'Mật khẩu phải ít nhất 8 ký tự.' : '');
+            setErr('err-confirm', pass !== confirm ? 'Mật khẩu xác nhận không khớp.' : '');
+            setErr('err-terms', !agreed ? 'Vui lòng đồng ý với điều khoản.' : '');
+
+            if (ok) {
+                document.getElementById('register-form').style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+                setTimeout(() => { window.location.href = './home.html'; }, 2500);
+            }
+        });
+    </script>
+</body>
+
+</html>

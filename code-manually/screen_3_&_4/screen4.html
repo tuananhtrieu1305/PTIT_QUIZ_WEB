@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kết quả bài thi - PTIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body class="result-page">
+
+
+    <header class="result-navbar">
+        <div class="nav-brand">
+            <div class="nav-brand-logo">🎓</div>
+            <div>
+                <div class="nav-brand-text">Học viện Công nghệ Bưu chính Viễn thông</div>
+                <div class="nav-brand-sub">HỆ THỐNG THI TRỰC TUYẾN</div>
+            </div>
+        </div>
+        <nav>
+            <a href="../screen_1_&_2/home.html">Trang chủ</a>
+            <a href="#" class="active">Bài thi của tôi</a>
+            <a href="#">Hồ sơ</a>
+            <button class="btn-logout">Đăng xuất</button>
+        </nav>
+    </header>
+
+
+    <main class="result-container">
+
+
+        <div class="result-hero">
+            <div class="result-hero-left">
+                <div class="result-status-badge">✅ ĐẠT YÊU CẦU</div>
+                <h1>Chúc mừng!</h1>
+                <p>Bạn đã hoàn thành bài thi <strong>Cấu trúc dữ liệu & Giải thuật</strong>.</p>
+                <div class="result-actions">
+                    <button class="btn-download" onclick="window.print()">⬇ Tải kết quả PDF</button>
+                    <a href="../screen_1_&_2/home.html">
+                        <button class="btn-back-home">← Quay lại trang chủ</button>
+                    </a>
+                </div>
+            </div>
+            <div class="score-box">
+                <div class="score-label">Điểm số</div>
+                <div><span class="score-value">6.0</span><span class="score-total">/10</span></div>
+            </div>
+        </div>
+
+
+        <div class="result-stats">
+            <div class="stat-item">
+                <div class="stat-icon green">✔</div>
+                <div>
+                    <div class="stat-info-label">Số câu đúng</div>
+                    <div class="stat-info-value">3<span class="stat-info-sub">/5</span></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon blue">ℹ</div>
+                <div>
+                    <div class="stat-info-label">Thời gian làm bài</div>
+                    <div class="stat-info-value">42<sup style="font-size:0.7rem">m</sup> 15<sup
+                            style="font-size:0.7rem">s</sup></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon amber">📊</div>
+                <div>
+                    <div class="stat-info-label">Thứ hạng</div>
+                    <div class="stat-info-value">Top 5%</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="review-card">
+            <div class="review-header">
+                <h3>📋 Chi tiết câu hỏi</h3>
+                <div class="answer-legend">
+                    <div class="legend-badge">
+                        <div class="dot-green"></div> Đúng
+                    </div>
+                    <div class="legend-badge">
+                        <div class="dot-red"></div> Sai
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="review-item open" id="ritem-1">
+                <div class="review-item-header" onclick="toggleReview('ritem-1')">
+                    <div class="q-number">1</div>
+                    <div class="review-q-text">Cấu trúc dữ liệu nào sau đây hoạt động theo nguyên tắc LIFO (Last In,
+                        First Out)?</div>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="review-item-body">
+                    <div class="review-option plain">A. Queue</div>
+                    <div class="review-option correct">B. Stack <span class="correct-tag">✓ Đáp án đúng</span></div>
+                    <div class="review-option plain">C. Deque</div>
+                    <div class="review-option plain">D. Linked List</div>
+                    <div class="review-explanation">
+                        <strong>Giải thích:</strong> Stack (Ngăn xếp) là cấu trúc mô phỏng việc vào sau ra trước (LIFO).
+                        Phần tử cuối cùng được thêm vào sẽ là phần tử đầu tiên được lấy ra.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="review-item" id="ritem-2">
+                <div class="review-item-header" onclick="toggleReview('ritem-2')">
+                    <div class="q-number">2</div>
+                    <div class="review-q-text">Độ phức tạp thời gian của thuật toán Binary Search là bao nhiêu?</div>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="review-item-body">
+                    <div class="review-option plain">A. O(n)</div>
+                    <div class="review-option plain">B. O(n²)</div>
+                    <div class="review-option correct">C. O(log n) <span class="correct-tag">✓ Đáp án đúng</span></div>
+                    <div class="review-option plain">D. O(n log n)</div>
+                </div>
+            </div>
+
+
+            <div class="review-item" id="ritem-3">
+                <div class="review-item-header" onclick="toggleReview('ritem-3')">
+                    <div class="q-number">3</div>
+                    <div class="review-q-text">Thuật toán nào sau đây sử dụng kỹ thuật 'Divide and Conquer'?</div>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="review-item-body">
+                    <div class="review-option plain">A. Bubble Sort</div>
+                    <div class="review-option plain">B. Insertion Sort</div>
+                    <div class="review-option plain">C. Selection Sort</div>
+                    <div class="review-option correct">D. Merge Sort <span class="correct-tag">✓ Đáp án đúng</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="review-item" id="ritem-4">
+                <div class="review-item-header" onclick="toggleReview('ritem-4')">
+                    <div class="q-number">4</div>
+                    <div class="review-q-text">Phương án nào sau đây mô tả chính xác nhất về độ phức tạp thời gian của
+                        thuật toán QuickSort trong trường hợp xấu nhất?</div>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="review-item-body">
+                    <div class="review-option plain">A. O(n log n)</div>
+                    <div class="review-option correct">B. O(n²) <span class="correct-tag">✓ Đáp án đúng</span></div>
+                    <div class="review-option wrong">C. O(log n) (câu trả lời của bạn)</div>
+                    <div class="review-option plain">D. O(1)</div>
+                    <div class="review-explanation">
+                        <strong>Giải thích:</strong> QuickSort có độ phức tạp trung bình là O(n log n), nhưng trong
+                        trường hợp xấu nhất (mảng đã được sắp xếp và chọn pivot không tốt), độ phức tạp sẽ bị suy biến
+                        thành O(n²).
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="review-item" id="ritem-5">
+                <div class="review-item-header" onclick="toggleReview('ritem-5')">
+                    <div class="q-number">5</div>
+                    <div class="review-q-text">Trong một cây nhị phân tìm kiếm (BST), phần tử có giá trị nhỏ nhất nằm ở
+                        đâu?</div>
+                    <span class="chevron">▼</span>
+                </div>
+                <div class="review-item-body">
+                    <div class="review-option plain">A. Nút gốc</div>
+                    <div class="review-option plain">B. Nút lá bên phải nhất</div>
+                    <div class="review-option correct">C. Nút lá bên trái nhất <span class="correct-tag">✓ Đáp án
+                            đúng</span></div>
+                    <div class="review-option plain">D. Không xác định</div>
+                </div>
+            </div>
+
+            <button class="show-more-btn" onclick="toggleShowMore(this)">Xem thêm câu hỏi ▾</button>
+        </div>
+
+    </main>
+
+    <footer class="result-footer">
+        &copy; 2023 Học viện Công nghệ Bưu chính Viễn thông. All rights reserved.
+    </footer>
+
+    <script>
+        function toggleReview(id) {
+            document.getElementById(id).classList.toggle('open');
+        }
+
+        function toggleShowMore(btn) {
+            const extra = document.getElementById('extra-questions');
+            if (extra) {
+                extra.style.display = extra.style.display === 'none' ? 'block' : 'none';
+                btn.textContent = extra.style.display === 'none' ? 'Xem thêm câu hỏi ▾' : 'Thu gọn ▲';
+            }
+        }
+    </script>
+</body>
+
+</html>
