@@ -1,253 +1,414 @@
 <!doctype html>
 <html lang="vi">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quản lý Sinh viên - PTIT Admin</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&subset=vietnamese&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&subset=vietnamese&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../screen_5_&_6/styles.css" />
     <link rel="stylesheet" href="./styles.css" />
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="app-container">
+      <aside class="sidebar">
+        <div class="logo">
+          <div class="logo-icon">
+            <img src="../assets/img/logo.png" alt="PTIT" />
+          </div>
+          <div class="logo-group">
+            <div class="logo-text">PTIT</div>
+            <div class="logo-sub">ADMIN PORTAL</div>
+          </div>
+        </div>
+        <nav class="nav-menu">
+          <a href="../screen_5_&_6/index.html" class="nav-item">
+            <span class="icon">📊</span> Tổng quan
+          </a>
+          <a href="./screen7.html" class="nav-item">
+            <span class="icon">📁</span> Kỳ thi
+          </a>
 
-        
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">
-                    <img src="../assets/img/logo.png" alt="PTIT" />
-                </div>
-                <div class="logo-group">
-                    <div class="logo-text">PTIT</div>
-                    <div class="logo-sub">ADMIN PORTAL</div>
-                </div>
-            </div>
-            <nav class="nav-menu">
-                <a href="../screen_5_&_6/index.html" class="nav-item">
-                    <span class="icon">📊</span> Tổng quan
-                </a>
-                <a href="./screen7.html" class="nav-item">
-                    <span class="icon">📁</span> Kỳ thi
-                </a>
+          <a href="#" class="nav-item active">
+            <span class="icon">👥</span> Sinh viên
+          </a>
+          <a
+            href="../screen_5_&_6/index.html"
+            class="nav-item"
+            data-target="statistics-view"
+          >
+            <span class="icon">📈</span> Thống kê
+          </a>
+        </nav>
+        <div class="user-profile">
+          <figure class="user-img">
+            <img
+              src="https://ui-avatars.com/api/?name=Admin&background=random"
+              alt="Admin"
+            />
+          </figure>
+          <div class="info">
+            <div class="name">TS. Nguyễn Văn A</div>
+            <div class="role">Quản trị viên cấp cao</div>
+          </div>
+        </div>
+        <button
+          class="logout-btn"
+          onclick="window.location.href = '../screen_1_&_2/login.html'"
+        >
+          Đăng xuất
+        </button>
+      </aside>
 
-                <a href="#" class="nav-item active">
-                    <span class="icon">👥</span> Sinh viên
-                </a>
-                <a href="../screen_5_&_6/index.html" class="nav-item" data-target="statistics-view">
-                    <span class="icon">📈</span> Thống kê
-                </a>
-            </nav>
-            <div class="user-profile">
-                <figure class="user-img">
-                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" alt="Admin" />
-                </figure>
-                <div class="info">
-                    <div class="name">TS. Nguyễn Văn A</div>
-                    <div class="role">Quản trị viên cấp cao</div>
-                </div>
-            </div>
-            <button class="logout-btn" onclick="window.location.href='../screen_1_&_2/login.html'">Đăng xuất</button>
-        </aside>
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <h1>Quản lý sinh viên</h1>
+            <p>Danh sách và thông tin chi tiết sinh viên toàn trường</p>
+          </div>
+          <div style="display: flex; gap: 10px">
+            <button
+              class="btn-outline"
+              onclick="
+                alert('Tính năng import Excel sẽ được tích hợp với backend')
+              "
+            >
+              📄 Import từ Excel
+            </button>
+            <button class="btn-primary" onclick="openModal('add-modal')">
+              + Thêm sinh viên
+            </button>
+          </div>
+        </div>
 
-        
-        <main class="main-content">
-            <div class="page-header">
-                <div>
-                    <h1>Quản lý sinh viên</h1>
-                    <p>Danh sách và thông tin chi tiết sinh viên toàn trường</p>
-                </div>
-                <div style="display:flex;gap:10px;">
-                    <button class="btn-outline"
-                        onclick="alert('Tính năng import Excel sẽ được tích hợp với backend')">📄 Import từ
-                        Excel</button>
-                    <button class="btn-primary" onclick="openModal('add-modal')">+ Thêm sinh viên</button>
-                </div>
-            </div>
+        <div class="filter-row">
+          <div class="search-box">
+            <span class="icon">🔍</span>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Tìm kiếm theo MSSV hoặc Họ tên..."
+              oninput="filterTable()"
+            />
+          </div>
+          <select
+            class="select-filter"
+            id="filter-faculty"
+            onchange="filterTable()"
+          >
+            <option value="">🏛 Tất cả các khoa</option>
+            <option value="CNTT">Khoa CNTT</option>
+            <option value="Viễn thông">Khoa Viễn thông</option>
+            <option value="Điện tử">Khoa Điện tử</option>
+          </select>
+          <select
+            class="select-filter"
+            id="filter-year"
+            onchange="filterTable()"
+          >
+            <option value="">📅 Khóa 2023</option>
+            <option value="2023">Khóa 2023</option>
+            <option value="2022">Khóa 2022</option>
+            <option value="2021">Khóa 2021</option>
+          </select>
+          <select
+            class="select-filter"
+            id="filter-class"
+            onchange="filterTable()"
+          >
+            <option value="">🏫 Tất cả lớp</option>
+            <option value="D23CQCN01-B">D23CQCN01-B</option>
+            <option value="D23CQCN02-B">D23CQCN02-B</option>
+          </select>
+        </div>
 
-            
-            <div class="filter-row">
-                <div class="search-box">
-                    <span class="icon">🔍</span>
-                    <input type="text" id="search-input" placeholder="Tìm kiếm theo MSSV hoặc Họ tên..."
-                        oninput="filterTable()">
-                </div>
-                <select class="select-filter" id="filter-faculty" onchange="filterTable()">
-                    <option value="">🏛 Tất cả các khoa</option>
-                    <option value="CNTT">Khoa CNTT</option>
-                    <option value="Viễn thông">Khoa Viễn thông</option>
-                    <option value="Điện tử">Khoa Điện tử</option>
-                </select>
-                <select class="select-filter" id="filter-year" onchange="filterTable()">
-                    <option value="">📅 Khóa 2023</option>
-                    <option value="2023">Khóa 2023</option>
-                    <option value="2022">Khóa 2022</option>
-                    <option value="2021">Khóa 2021</option>
-                </select>
-                <select class="select-filter" id="filter-class" onchange="filterTable()">
-                    <option value="">🏫 Tất cả lớp</option>
-                    <option value="D23CQCN01-B">D23CQCN01-B</option>
-                    <option value="D23CQCN02-B">D23CQCN02-B</option>
-                </select>
+        <div class="table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 36px">
+                  <div class="custom-check"></div>
+                </th>
+                <th>Sinh viên</th>
+                <th>Lớp / MSSV</th>
+                <th>Liên hệ</th>
+                <th>Bài thi</th>
+                <th>Điểm TB</th>
+                <th style="width: 40px"></th>
+              </tr>
+            </thead>
+            <tbody id="student-tbody"></tbody>
+          </table>
+          <div class="pagination-row">
+            <div class="pagination-info" id="pagination-info">
+              Hiển thị 1 đến 5 của 248 sinh viên
             </div>
-
-            
-            <div class="table-card">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th style="width:36px">
-                                <div class="custom-check"></div>
-                            </th>
-                            <th>Sinh viên</th>
-                            <th>Lớp / MSSV</th>
-                            <th>Liên hệ</th>
-                            <th>Bài thi</th>
-                            <th>Điểm TB</th>
-                            <th style="width:40px"></th>
-                        </tr>
-                    </thead>
-                    <tbody id="student-tbody"></tbody>
-                </table>
-                <div class="pagination-row">
-                    <div class="pagination-info" id="pagination-info">Hiển thị 1 đến 5 của 248 sinh viên</div>
-                    <div class="pagination-btns">
-                        <button class="pg-btn">&#8249;</button>
-                        <button class="pg-btn active">1</button>
-                        <button class="pg-btn">2</button>
-                        <button class="pg-btn">3</button>
-                        <span style="padding:0 4px;color:var(--text-muted);font-size:0.85rem">...</span>
-                        <button class="pg-btn">50</button>
-                        <button class="pg-btn">&#8250;</button>
-                    </div>
-                </div>
+            <div class="pagination-btns">
+              <button class="pg-btn">&#8249;</button>
+              <button class="pg-btn active">1</button>
+              <button class="pg-btn">2</button>
+              <button class="pg-btn">3</button>
+              <span
+                style="
+                  padding: 0 4px;
+                  color: var(--text-muted);
+                  font-size: 0.85rem;
+                "
+                >...</span
+              >
+              <button class="pg-btn">50</button>
+              <button class="pg-btn">&#8250;</button>
             </div>
-        </main>
+          </div>
+        </div>
+      </main>
     </div>
 
-    
     <div class="modal-overlay" id="add-modal">
-        <div class="modal-box">
-            <div class="modal-header">
-                <h3 id="add-modal-title">➕ Thêm sinh viên mới</h3>
-                <button class="btn-close" onclick="closeModal('add-modal')">✕</button>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Họ và tên <span style="color:var(--ptit-red)">*</span></label>
-                    <input type="text" class="form-control" id="sv-name" placeholder="Nguyễn Văn A">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">MSSV <span style="color:var(--ptit-red)">*</span></label>
-                    <input type="text" class="form-control" id="sv-mssv" placeholder="B23DCAT123">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Lớp</label>
-                    <input type="text" class="form-control" id="sv-class" placeholder="D23CQCN01-B">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Giới tính</label>
-                    <select class="form-control" id="sv-gender">
-                        <option>Nam</option>
-                        <option>Nữ</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" id="sv-email" placeholder="sv@st.ptit.edu.vn">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Số điện thoại</label>
-                    <input type="text" class="form-control" id="sv-phone" placeholder="09xx xxx xxx">
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button class="btn-outline" onclick="closeModal('add-modal')">Hủy</button>
-                <button class="btn-primary" onclick="saveStudent()">Lưu sinh viên</button>
-            </div>
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="add-modal-title">➕ Thêm sinh viên mới</h3>
+          <button class="btn-close" onclick="closeModal('add-modal')">✕</button>
         </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"
+              >Họ và tên <span style="color: var(--ptit-red)">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="sv-name"
+              placeholder="Nguyễn Văn A"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label"
+              >MSSV <span style="color: var(--ptit-red)">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="sv-mssv"
+              placeholder="B23DCAT123"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Lớp</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sv-class"
+              placeholder="D23CQCN01-B"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Giới tính</label>
+            <select class="form-control" id="sv-gender">
+              <option>Nam</option>
+              <option>Nữ</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id="sv-email"
+              placeholder="sv@st.ptit.edu.vn"
+            />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Số điện thoại</label>
+            <input
+              type="text"
+              class="form-control"
+              id="sv-phone"
+              placeholder="09xx xxx xxx"
+            />
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-outline" onclick="closeModal('add-modal')">
+            Hủy
+          </button>
+          <button class="btn-primary" onclick="saveStudent()">
+            Lưu sinh viên
+          </button>
+        </div>
+      </div>
     </div>
 
-    
     <div class="modal-overlay" id="detail-modal">
-        <div class="modal-box" style="max-width:580px">
-            <div class="modal-header">
-                <h3>👤 Thông tin sinh viên</h3>
-                <button class="btn-close" onclick="closeModal('detail-modal')">✕</button>
-            </div>
-            <div id="detail-content"></div>
-            <div class="modal-actions">
-                <button class="btn-outline" onclick="closeModal('detail-modal')">Đóng</button>
-                <button class="btn-primary" onclick="closeModal('detail-modal')">Xuất báo cáo PDF</button>
-            </div>
+      <div class="modal-box" style="max-width: 580px">
+        <div class="modal-header">
+          <h3>👤 Thông tin sinh viên</h3>
+          <button class="btn-close" onclick="closeModal('detail-modal')">
+            ✕
+          </button>
         </div>
+        <div id="detail-content"></div>
+        <div class="modal-actions">
+          <button class="btn-outline" onclick="closeModal('detail-modal')">
+            Đóng
+          </button>
+          <button class="btn-primary" onclick="closeModal('detail-modal')">
+            Xuất báo cáo PDF
+          </button>
+        </div>
+      </div>
     </div>
 
-    
     <div class="modal-overlay" id="delete-student-modal">
-        <div class="modal-box" style="max-width:380px;text-align:center;padding:32px">
-            <div style="font-size:2.5rem;margin-bottom:12px">🗑</div>
-            <h3 style="margin-bottom:8px">Xóa sinh viên?</h3>
-            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:24px">Bạn có chắc muốn xóa sinh viên "<span
-                    id="delete-sv-name" style="font-weight:600"></span>" khỏi hệ thống?</p>
-            <div style="display:flex;gap:12px;justify-content:center">
-                <button class="btn-outline" onclick="closeModal('delete-student-modal')">Hủy</button>
-                <button class="btn-primary" style="background:#dc2626" onclick="confirmDeleteStudent()">Xóa</button>
-            </div>
+      <div
+        class="modal-box"
+        style="max-width: 380px; text-align: center; padding: 32px"
+      >
+        <div style="font-size: 2.5rem; margin-bottom: 12px">🗑</div>
+        <h3 style="margin-bottom: 8px">Xóa sinh viên?</h3>
+        <p
+          style="
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+          "
+        >
+          Bạn có chắc muốn xóa sinh viên "<span
+            id="delete-sv-name"
+            style="font-weight: 600"
+          ></span
+          >" khỏi hệ thống?
+        </p>
+        <div style="display: flex; gap: 12px; justify-content: center">
+          <button
+            class="btn-outline"
+            onclick="closeModal('delete-student-modal')"
+          >
+            Hủy
+          </button>
+          <button
+            class="btn-primary"
+            style="background: #dc2626"
+            onclick="confirmDeleteStudent()"
+          >
+            Xóa
+          </button>
         </div>
+      </div>
     </div>
 
+    <script src="./app.js"></script>
     <script>
-        
-        const COLORS = ['#6366f1', '#0891b2', '#16a34a', '#d97706', '#db2777'];
+      const COLORS = ["#6366f1", "#0891b2", "#16a34a", "#d97706", "#db2777"];
 
-        let students = [
-            { id: 1, name: 'Nguyễn Văn An', mssv: 'B23DCAT123', cls: 'D23CQCN01-B', gender: 'Nam', dob: '12/05/2003', email: 'an.nguyen@st.ptit.edu.vn', phone: '0987 654 321', exams: 12, gpa: 8.5 },
-            { id: 2, name: 'Trần Thị Bình', mssv: 'B23DCCN456', cls: 'D23CQCN02-B', gender: 'Nữ', dob: '24/08/2003', email: 'binh.tran@st.ptit.edu.vn', phone: '0912 345 678', exams: 10, gpa: 9.2 },
-            { id: 3, name: 'Lê Văn Cường', mssv: 'B23DCAT789', cls: 'D23CQCN01-B', gender: 'Nam', dob: '02/02/2003', email: 'cuong.le@st.ptit.edu.vn', phone: '0999 888 777', exams: 0, gpa: null },
-            { id: 4, name: 'Phạm Minh Đức', mssv: 'B23DCCN111', cls: 'D23CQCN02-B', gender: 'Nam', dob: '15/11/2003', email: 'duc.pham@st.ptit.edu.vn', phone: '0933 222 111', exams: 8, gpa: 6.8 },
-            { id: 5, name: 'Hoàng Thu Thảo', mssv: 'B23DCAT222', cls: 'D23CQCN01-B', gender: 'Nữ', dob: '30/01/2003', email: 'thao.hoang@st.ptit.edu.vn', phone: '0966 555 444', exams: 15, gpa: 9.5 },
-        ];
+      let students = [
+        {
+          id: 1,
+          name: "Nguyễn Văn An",
+          mssv: "B23DCAT123",
+          cls: "D23CQCN01-B",
+          gender: "Nam",
+          dob: "12/05/2003",
+          email: "an.nguyen@st.ptit.edu.vn",
+          phone: "0987 654 321",
+          exams: 12,
+          gpa: 8.5,
+        },
+        {
+          id: 2,
+          name: "Trần Thị Bình",
+          mssv: "B23DCCN456",
+          cls: "D23CQCN02-B",
+          gender: "Nữ",
+          dob: "24/08/2003",
+          email: "binh.tran@st.ptit.edu.vn",
+          phone: "0912 345 678",
+          exams: 10,
+          gpa: 9.2,
+        },
+        {
+          id: 3,
+          name: "Lê Văn Cường",
+          mssv: "B23DCAT789",
+          cls: "D23CQCN01-B",
+          gender: "Nam",
+          dob: "02/02/2003",
+          email: "cuong.le@st.ptit.edu.vn",
+          phone: "0999 888 777",
+          exams: 0,
+          gpa: null,
+        },
+        {
+          id: 4,
+          name: "Phạm Minh Đức",
+          mssv: "B23DCCN111",
+          cls: "D23CQCN02-B",
+          gender: "Nam",
+          dob: "15/11/2003",
+          email: "duc.pham@st.ptit.edu.vn",
+          phone: "0933 222 111",
+          exams: 8,
+          gpa: 6.8,
+        },
+        {
+          id: 5,
+          name: "Hoàng Thu Thảo",
+          mssv: "B23DCAT222",
+          cls: "D23CQCN01-B",
+          gender: "Nữ",
+          dob: "30/01/2003",
+          email: "thao.hoang@st.ptit.edu.vn",
+          phone: "0966 555 444",
+          exams: 15,
+          gpa: 9.5,
+        },
+      ];
 
-        let editStudentId = null;
-        let deleteStudentId = null;
+      let editStudentId = null;
+      let deleteStudentId = null;
 
-        function getInitials(name) {
-            return name.split(' ').slice(-2).map(w => w[0]).join('').toUpperCase();
-        }
+      function getInitials(name) {
+        return name
+          .split(" ")
+          .slice(-2)
+          .map((w) => w[0])
+          .join("")
+          .toUpperCase();
+      }
 
-        function getColor(i) { return COLORS[i % COLORS.length]; }
+      function getColor(i) {
+        return COLORS[i % COLORS.length];
+      }
 
-        function scoreBarClass(gpa) {
-            if (!gpa) return '';
-            if (gpa >= 8) return 'high';
-            if (gpa >= 6) return 'mid';
-            return 'low';
-        }
+      function scoreBarClass(gpa) {
+        if (!gpa) return "";
+        if (gpa >= 8) return "high";
+        if (gpa >= 6) return "mid";
+        return "low";
+      }
 
-        
-        function renderTable(data) {
-            const tbody = document.getElementById('student-tbody');
-            tbody.innerHTML = '';
-            data.forEach((s, i) => {
-                const gpaText = s.gpa !== null ? s.gpa.toFixed(1) : '--';
-                const scoreW = s.gpa !== null ? (s.gpa / 10 * 80) : 0;
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
+      function renderTable(data) {
+        const tbody = document.getElementById("student-tbody");
+        tbody.innerHTML = "";
+        data.forEach((s, i) => {
+          const gpaText = s.gpa !== null ? s.gpa.toFixed(1) : "--";
+          const scoreW = s.gpa !== null ? (s.gpa / 10) * 80 : 0;
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
         <td><div class="custom-check"></div></td>
         <td>
           <div class="student-cell">
             <div class="avatar-initials" style="background:${getColor(i)}">${getInitials(s.name)}</div>
-            <div>
+            <div class="student-info">
               <div class="td-name">${s.name}</div>
               <div class="td-sub">${s.gender} • ${s.dob}</div>
             </div>
@@ -264,7 +425,7 @@
         <td>
           <span style="background:#e0f2fe;color:#0369a1;padding:3px 10px;border-radius:20px;font-size:0.78rem;font-weight:600;">${s.exams} bài</span>
         </td>
-        <td>
+        <td class="score-cell-admin">
           <div style="font-weight:700;font-size:0.95rem">${gpaText}</div>
           <div class="score-bar"><div class="score-fill ${scoreBarClass(s.gpa)}" style="width:${scoreW}px"></div></div>
         </td>
@@ -274,65 +435,77 @@
           </div>
         </td>
       `;
-                tbody.appendChild(tr);
-            });
-            document.getElementById('pagination-info').textContent =
-                `Hiển thị 1 đến ${data.length} của 248 sinh viên`;
-        }
+          tbody.appendChild(tr);
+        });
+        document.getElementById("pagination-info").textContent =
+          `Hiển thị 1 đến ${data.length} của 248 sinh viên`;
+      }
 
-        function filterTable() {
-            const q = document.getElementById('search-input').value.toLowerCase();
-            const filtered = students.filter(s =>
-                s.name.toLowerCase().includes(q) || s.mssv.toLowerCase().includes(q)
-            );
-            renderTable(filtered);
-        }
-
-        
-        function openModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-        document.querySelectorAll('.modal-overlay').forEach(m =>
-            m.addEventListener('click', e => { if (e.target === m) m.classList.remove('active'); })
+      function filterTable() {
+        const q = document.getElementById("search-input").value.toLowerCase();
+        const filtered = students.filter(
+          (s) =>
+            s.name.toLowerCase().includes(q) ||
+            s.mssv.toLowerCase().includes(q),
         );
+        renderTable(filtered);
+      }
 
-        
-        function saveStudent() {
-            const name = document.getElementById('sv-name').value.trim();
-            const mssv = document.getElementById('sv-mssv').value.trim();
-            if (!name || !mssv) { alert('Vui lòng nhập họ tên và MSSV!'); return; }
-            const data = {
-                id: editStudentId || Date.now(),
-                name,
-                mssv,
-                cls: document.getElementById('sv-class').value || 'D23CQCN01-B',
-                gender: document.getElementById('sv-gender').value,
-                dob: '--',
-                email: document.getElementById('sv-email').value || `${mssv.toLowerCase()}@st.ptit.edu.vn`,
-                phone: document.getElementById('sv-phone').value || '--',
-                exams: 0,
-                gpa: null,
-            };
-            if (editStudentId) {
-                const idx = students.findIndex(x => x.id === editStudentId);
-                students[idx] = data;
-                editStudentId = null;
-            } else {
-                students.push(data);
-            }
-            ['sv-name', 'sv-mssv', 'sv-class', 'sv-email', 'sv-phone'].forEach(id =>
-                document.getElementById(id).value = ''
-            );
-            document.getElementById('add-modal-title').textContent = '➕ Thêm sinh viên mới';
-            closeModal('add-modal');
-            filterTable();
+      function openModal(id) {
+        document.getElementById(id).classList.add("active");
+      }
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("active");
+      }
+
+      document.querySelectorAll(".modal-overlay").forEach((m) =>
+        m.addEventListener("click", (e) => {
+          if (e.target === m) m.classList.remove("active");
+        }),
+      );
+
+      function saveStudent() {
+        const name = document.getElementById("sv-name").value.trim();
+        const mssv = document.getElementById("sv-mssv").value.trim();
+        if (!name || !mssv) {
+          alert("Vui lòng nhập họ tên và MSSV!");
+          return;
         }
+        const data = {
+          id: editStudentId || Date.now(),
+          name,
+          mssv,
+          cls: document.getElementById("sv-class").value || "D23CQCN01-B",
+          gender: document.getElementById("sv-gender").value,
+          dob: "--",
+          email:
+            document.getElementById("sv-email").value ||
+            `${mssv.toLowerCase()}@st.ptit.edu.vn`,
+          phone: document.getElementById("sv-phone").value || "--",
+          exams: 0,
+          gpa: null,
+        };
+        if (editStudentId) {
+          const idx = students.findIndex((x) => x.id === editStudentId);
+          students[idx] = data;
+          editStudentId = null;
+        } else {
+          students.push(data);
+        }
+        ["sv-name", "sv-mssv", "sv-class", "sv-email", "sv-phone"].forEach(
+          (id) => (document.getElementById(id).value = ""),
+        );
+        document.getElementById("add-modal-title").textContent =
+          "➕ Thêm sinh viên mới";
+        closeModal("add-modal");
+        filterTable();
+      }
 
-        
-        function openDetail(id) {
-            const s = students.find(x => x.id === id);
-            const gpaText = s.gpa !== null ? s.gpa.toFixed(1) + '/10' : 'Chưa có dữ liệu';
-            document.getElementById('detail-content').innerHTML = `
+      function openDetail(id) {
+        const s = students.find((x) => x.id === id);
+        const gpaText =
+          s.gpa !== null ? s.gpa.toFixed(1) + "/10" : "Chưa có dữ liệu";
+        document.getElementById("detail-content").innerHTML = `
       <div style="display:flex;align-items:center;gap:16px;margin-bottom:22px;padding:16px;background:var(--bg-color);border-radius:10px">
         <div class="avatar-initials" style="background:${getColor(0)};width:54px;height:54px;font-size:1.2rem">${getInitials(s.name)}</div>
         <div>
@@ -342,37 +515,43 @@
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
         ${[
-                    ['Email', s.email],
-                    ['Điện thoại', s.phone],
-                    ['Số bài thi', s.exams + ' bài'],
-                    ['Điểm TB', gpaText],
-                ].map(([l, v]) => `
+          ["Email", s.email],
+          ["Điện thoại", s.phone],
+          ["Số bài thi", s.exams + " bài"],
+          ["Điểm TB", gpaText],
+        ]
+          .map(
+            ([l, v]) => `
           <div style="background:var(--bg-color);padding:12px 14px;border-radius:8px">
             <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:3px">${l}</div>
             <div style="font-weight:600">${v}</div>
-          </div>`).join('')}
+          </div>`,
+          )
+          .join("")}
       </div>
       <div style="background:var(--bg-color);padding:14px;border-radius:8px;">
         <div style="font-size:0.8rem;font-weight:700;margin-bottom:10px;color:var(--text-muted)">LỊCH SỬ THI GẦN ĐÂY</div>
         ${[
-                    ['Lập trình C++', '9.0', '60 phút', 'Đạt'],
-                    ['Cơ sở dữ liệu', '7.5', '90 phút', 'Đạt'],
-                    ['Giải tích 1', '6.0', '75 phút', 'Đạt'],
-                ].map(([name, score, time, status]) => `
+          ["Lập trình C++", "9.0", "60 phút", "Đạt"],
+          ["Cơ sở dữ liệu", "7.5", "90 phút", "Đạt"],
+          ["Giải tích 1", "6.0", "75 phút", "Đạt"],
+        ]
+          .map(
+            ([name, score, time, status]) => `
           <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border-color);font-size:0.85rem">
             <span>${name}</span>
             <span style="font-weight:700;color:var(--ptit-red)">${score}</span>
             <span style="color:var(--text-muted)">${time}</span>
             <span style="background:#dcfce7;color:#166534;padding:2px 8px;border-radius:20px;font-size:0.75rem;font-weight:600">${status}</span>
-          </div>`).join('')}
+          </div>`,
+          )
+          .join("")}
       </div>
     `;
-            openModal('detail-modal');
-        }
+        openModal("detail-modal");
+      }
 
-        
-        renderTable(students);
+      renderTable(students);
     </script>
-</body>
-
+  </body>
 </html>
