@@ -22,7 +22,6 @@ body {
   height: 100vh;
 }
 
-
 .sidebar {
   width: 260px;
   background-color: var(--sidebar-bg);
@@ -156,13 +155,16 @@ body {
   cursor: pointer;
   margin: 0 auto 10px auto;
   transition: all 0.2s linear;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout-btn:hover {
   background: #4b5563;
   color: white;
 }
-
 
 .main-content {
   flex-grow: 1;
@@ -281,7 +283,6 @@ body {
   color: #374151;
 }
 
-
 .dashboard-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -329,7 +330,6 @@ body {
   text-decoration: none;
   font-size: 0.9rem;
 }
-
 
 .data-table {
   width: 100%;
@@ -448,7 +448,6 @@ body {
   color: #92400e;
 }
 
-
 .quick-actions-card {
   background: var(--ptit-red);
   color: white;
@@ -470,7 +469,6 @@ body {
 .btn-action:hover {
   background: rgba(255, 255, 255, 0.3);
 }
-
 
 .css-bar-chart {
   display: flex;
@@ -911,7 +909,6 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-
 .student-profile-header {
   display: flex;
   align-items: center;
@@ -1050,7 +1047,6 @@ body {
 .btn-ptit:hover {
   background-color: var(--ptit-red-dark);
 }
-
 
 .question-card {
   background-color: #f9fafb;
