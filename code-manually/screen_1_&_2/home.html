@@ -1,233 +1,373 @@
 <!doctype html>
 <html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang chủ - Hệ thống thi trực tuyến PTIT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trang chủ - Hệ thống thi trực tuyến PTIT</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/reset.css" />
-  <link rel="stylesheet" href="./styles.css" />
-</head>
-
-<body class="home-body">
-  
-  <header class="top-navbar">
-    <div class="nav-container">
-      <div class="nav-logo">
-        <img src="../assets/img/logo.png" alt="PTIT Logo">
-        <div class="logo-text-group">
-          <span class="ptit-title">PTIT</span>
-          <span class="ptit-sub">Hệ thống thi trực tuyến</span>
-        </div>
-      </div>
-
-      <div class="nav-search">
-        <span class="search-icon"></span>
-        <input type="text" placeholder="Tìm kiếm kỳ thi, môn học...">
-      </div>
-
-      <div class="nav-actions">
-        <div class="nav-bell">
-          <span>🔔</span>
-          <div class="bell-dot"></div>
-        </div>
-        <div class="nav-profile">
-          <img src="https://ui-avatars.com/api/?name=Nguyen+Van+A&background=random" alt="Avatar">
-          <div class="profile-info">
-            <span class="profile-name">Nguyễn Văn A</span>
-            <span class="profile-id">B20DCCN001</span>
+  <body class="home-body">
+    <header class="top-navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <img src="../assets/img/logo.png" alt="PTIT Logo" />
+          <div class="logo-text-group">
+            <span class="ptit-title">PTIT</span>
+            <span class="ptit-sub">Hệ thống thi trực tuyến</span>
           </div>
-          <span class="dropdown-icon">⌄</span>
+        </div>
+
+        <div class="nav-search">
+          <span class="search-icon"></span>
+          <input type="text" placeholder="Tìm kiếm kỳ thi, môn học..." />
+        </div>
+
+        <div class="nav-actions">
+          <div class="nav-bell">
+            <a class="admin-go-button" href="../screen_5_&_6/index.html"
+              >Đến trang Admin</a
+            >
+          </div>
+          <div class="nav-profile">
+            <img
+              src="https://ui-avatars.com/api/?name=Nguyen+Van+A&background=random"
+              alt="Avatar"
+            />
+            <div class="profile-info">
+              <span class="profile-name">Nguyễn Văn A</span>
+              <span class="profile-id">B20DCCN001</span>
+            </div>
+            <span class="dropdown-icon">⌄</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="home-container">
+      <section class="hero-banner">
+        <div class="hero-content">
+          <div class="hero-badge">Thông báo quan trọng</div>
+          <h1>
+            Chào mừng trở lại,<br /><span class="highlight-red"
+              >Nguyễn Văn A!</span
+            >
+          </h1>
+          <p>
+            Bạn có <strong>3 kỳ thi</strong> sắp diễn ra trong tuần này. Hãy
+            chuẩn bị thật tốt kiến thức của mình nhé.
+          </p>
+          <div class="hero-filter-bar">
+            <div class="filter-item">
+              <label>Tên kỳ thi / Môn học</label>
+              <input
+                type="text"
+                id="search-exam-name"
+                placeholder="VD: Lập trình web..."
+              />
+            </div>
+            <div class="filter-item">
+              <label>Loại kỳ thi</label>
+              <select id="filter-exam-type">
+                <option value="all">Tất cả loại</option>
+                <option value="free">Luyện tập tự do</option>
+                <option value="strict">Yêu cầu thời gian</option>
+              </select>
+            </div>
+            <div class="filter-item">
+              <label>Trạng thái</label>
+              <select id="filter-exam-status">
+                <option value="all">Tất cả trạng thái</option>
+                <option value="live">Đang diễn ra</option>
+                <option value="upcoming">Sắp diễn ra</option>
+              </select>
+            </div>
+            <button
+              class="btn-primary"
+              id="btn-apply-filter"
+              style="height: 42px; margin-top: auto; padding: 0 20px"
+            >
+              Lọc
+            </button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800"
+            alt="University Building"
+          />
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <h2>Kỳ thi sắp tới</h2>
+          <a href="#" class="view-all" id="btn-view-all-exams">Xem tất cả ➔</a>
+        </div>
+
+        <div class="cards-grid">
+          <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
+            <div class="exam-card">
+              <div class="card-cover bg-navy">
+                <div class="status-badge live">● Đang diễn ra</div>
+                <div class="cover-icon">⟨ ⟩</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="course-code blue">INT1340</span>
+                  <span class="semester">Học kỳ 1 - 2024</span>
+                </div>
+                <h3>Cấu trúc dữ liệu & Giải thuật</h3>
+                <div class="card-details">
+                  <span>⏱ 60 phút</span>
+                  <span>📄 40 câu hỏi</span>
+                </div>
+                <button class="btn-primary full-width">Vào thi ngay ➔</button>
+              </div>
+            </div>
+          </a>
+
+          <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
+            <div class="exam-card">
+              <div class="card-cover bg-purple">
+                <div class="status-badge upcomming">🕒 Sắp diễn ra</div>
+                <div class="cover-icon">⚲</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="course-code orange">INT1405</span>
+                  <span class="semester">Học kỳ 1 - 2024</span>
+                </div>
+                <h3>Hệ quản trị cơ sở dữ liệu</h3>
+                <div class="card-details">
+                  <span>⏱ 90 phút</span>
+                  <span>📅 14:00 hôm nay</span>
+                </div>
+                <button class="btn-primary full-width">Vào thi (Demo) ➔</button>
+              </div>
+            </div>
+          </a>
+
+          <a href="../screen_3_&_4/screen4.html" class="exam-card-link">
+            <div class="exam-card">
+              <div class="card-cover bg-green">
+                <div class="status-badge closed">📅 Đã đóng</div>
+                <div class="cover-icon">∑</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="course-code gray">MAT201</span>
+                  <span class="semester">Học kỳ 1 - 2024</span>
+                </div>
+                <h3>Đại số tuyến tính</h3>
+                <div class="card-details">
+                  <span>⏱ 75 phút</span>
+                  <span>📅 25/10/2024</span>
+                </div>
+                <button class="btn-outline full-width">Xem kết quả 👁</button>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section-block practice-section">
+        <div class="section-header">
+          <h2 class="sub-header-icon"><span>💪</span> Luyện tập tự do</h2>
+          <div class="filter-tabs">
+            <button class="filter-tab active">Tất cả</button>
+            <button class="filter-tab">Tiếng Anh</button>
+            <button class="filter-tab">CNTT</button>
+            <button class="filter-tab">Khác</button>
+          </div>
+        </div>
+
+        <div class="practice-grid">
+          <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
+            <div class="practice-card">
+              <div class="practice-icon bg-light-blue">A/あ</div>
+              <div class="practice-content">
+                <div class="practice-title-row">
+                  <h4>Tiếng Anh chuyên ngành</h4>
+                  <span class="arrow-up">↗</span>
+                </div>
+                <p>Luyện tập kỹ năng đọc hiểu và từ vựng chuyên ngành CNTT.</p>
+                <div class="practice-tags">
+                  <span class="pt-tag">30 phút</span>
+                  <span class="dot">•</span>
+                  <span class="pt-tag">Không giới hạn</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
+            <div class="practice-card">
+              <div class="practice-icon bg-light-orange">HTML</div>
+              <div class="practice-content">
+                <div class="practice-title-row">
+                  <h4>Lập trình Web cơ bản</h4>
+                  <span class="arrow-up">↗</span>
+                </div>
+                <p>Ôn tập kiến thức HTML, CSS và JavaScript căn bản.</p>
+                <div class="practice-tags">
+                  <span class="pt-tag">45 phút</span>
+                  <span class="dot">•</span>
+                  <span class="pt-tag">Không giới hạn</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
+            <div class="practice-card">
+              <div class="practice-icon bg-light-purple">🌐</div>
+              <div class="practice-content">
+                <div class="practice-title-row">
+                  <h4>Mạng máy tính</h4>
+                  <span class="arrow-up">↗</span>
+                </div>
+                <p>
+                  Các câu hỏi trắc nghiệm về mô hình OSI và giao thức TCP/IP.
+                </p>
+                <div class="practice-tags">
+                  <span class="pt-tag">15 phút</span>
+                  <span class="dot">•</span>
+                  <span class="pt-tag">Không giới hạn</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <img src="../assets/img/logo.png" alt="Logo" class="footer-logo" />
+          <span
+            >Hệ thống quản lý thi trực tuyến - Học viện Công nghệ Bưu chính Viễn
+            thông</span
+          >
+        </div>
+        <div class="footer-links">
+          <a href="#">Trợ giúp</a>
+          <a href="#">Điều khoản</a>
+          <a href="#">Liên hệ</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-overlay" id="all-exams-modal">
+      <div class="modal-container" style="max-width: 1000px; max-height: 90vh">
+        <div class="modal-header">
+          <h3
+            style="
+              margin: 0;
+              font-size: 1.4rem;
+              font-weight: bold;
+              color: var(--ptit-red);
+            "
+          >
+            Tất cả kỳ thi hệ thống
+          </h3>
+          <button class="modal-close" id="close-exams-modal-btn">
+            &times;
+          </button>
+        </div>
+
+        <div class="modal-body" style="padding: 25px; overflow-y: auto">
+          <div class="cards-grid">
+            <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
+              <div class="exam-card">
+                <div class="card-cover bg-navy">
+                  <div class="status-badge live">● Đang diễn ra</div>
+                  <div class="cover-icon">⟨ ⟩</div>
+                </div>
+                <div class="card-body">
+                  <div class="card-meta">
+                    <span class="course-code blue">INT1340</span>
+                    <span class="semester">Học kỳ 1 - 2024</span>
+                  </div>
+                  <h3>Cấu trúc dữ liệu & Giải thuật</h3>
+                  <div class="card-details">
+                    <span>⏱ 60 phút</span><span>📄 40 câu hỏi</span>
+                  </div>
+                  <button class="btn-primary full-width">Vào thi ngay ➔</button>
+                </div>
+              </div>
+            </a>
+            <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
+              <div class="exam-card">
+                <div class="card-cover bg-purple">
+                  <div class="status-badge upcomming">🕒 Sắp diễn ra</div>
+                  <div class="cover-icon">⚲</div>
+                </div>
+                <div class="card-body">
+                  <div class="card-meta">
+                    <span class="course-code orange">INT1405</span>
+                    <span class="semester">Học kỳ 1 - 2024</span>
+                  </div>
+                  <h3>Hệ quản trị cơ sở dữ liệu</h3>
+                  <div class="card-details">
+                    <span>⏱ 90 phút</span><span>📅 14:00 hôm nay</span>
+                  </div>
+                  <button class="btn-primary full-width">
+                    Vào thi (Demo) ➔
+                  </button>
+                </div>
+              </div>
+            </a>
+            <a href="../screen_3_&_4/screen4.html" class="exam-card-link">
+              <div class="exam-card">
+                <div class="card-cover bg-green">
+                  <div class="status-badge closed">📅 Đã đóng</div>
+                  <div class="cover-icon">∑</div>
+                </div>
+                <div class="card-body">
+                  <div class="card-meta">
+                    <span class="course-code gray">MAT201</span>
+                    <span class="semester">Học kỳ 1 - 2024</span>
+                  </div>
+                  <h3>Đại số tuyến tính</h3>
+                  <div class="card-details">
+                    <span>⏱ 75 phút</span><span>📅 25/10/2024</span>
+                  </div>
+                  <button class="btn-outline full-width">Xem kết quả 👁</button>
+                </div>
+              </div>
+            </a>
+            <a href="#" class="exam-card-link">
+              <div class="exam-card">
+                <div class="card-cover" style="background-color: #be123c">
+                  <div class="status-badge live">● Đang diễn ra</div>
+                  <div class="cover-icon">★</div>
+                </div>
+                <div class="card-body">
+                  <div class="card-meta">
+                    <span class="course-code blue">BAS1203</span>
+                    <span class="semester">Học kỳ 1 - 2024</span>
+                  </div>
+                  <h3>Giải tích 1</h3>
+                  <div class="card-details">
+                    <span>⏱ 90 phút</span><span>📄 50 câu hỏi</span>
+                  </div>
+                  <button class="btn-primary full-width">Vào thi ngay ➔</button>
+                </div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </header>
-
-  <main class="home-container">
-    
-    <section class="hero-banner">
-      <div class="hero-content">
-        <div class="hero-badge"> Thông báo quan trọng</div>
-        <h1>Chào mừng trở lại,<br><span class="highlight-red">Nguyễn Văn A!</span></h1>
-        <p>Bạn có <strong>3 kỳ thi</strong> sắp diễn ra trong tuần này. Hãy chuẩn bị thật tốt kiến thức của mình nhé.
-        </p>
-        <div class="hero-buttons">
-          <button class="btn-primary">Xem lịch thi </button>
-          <button class="btn-outline">Kết quả học tập</button>
-        </div>
-      </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=800" alt="University Building">
-      </div>
-    </section>
-
-    
-    <section class="section-block">
-      <div class="section-header">
-        <h2>Kỳ thi sắp tới</h2>
-        <a href="#" class="view-all">Xem tất cả ➔</a>
-      </div>
-
-      <div class="cards-grid">
-        
-        <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
-          <div class="exam-card">
-            <div class="card-cover bg-navy">
-              <div class="status-badge live">● Đang diễn ra</div>
-              <div class="cover-icon">⟨ ⟩</div>
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="course-code blue">INT1340</span>
-                <span class="semester">Học kỳ 1 - 2024</span>
-              </div>
-              <h3>Cấu trúc dữ liệu & Giải thuật</h3>
-              <div class="card-details">
-                <span>⏱ 60 phút</span>
-                <span>📄 40 câu hỏi</span>
-              </div>
-              <button class="btn-primary full-width">Vào thi ngay ➔</button>
-            </div>
-          </div>
-        </a>
-
-        
-        <a href="../screen_3_&_4/screen3.html" class="exam-card-link">
-          <div class="exam-card">
-            <div class="card-cover bg-purple">
-              <div class="status-badge upcomming">🕒 Sắp diễn ra</div>
-              <div class="cover-icon">⚲</div>
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="course-code orange">INT1405</span>
-                <span class="semester">Học kỳ 1 - 2024</span>
-              </div>
-              <h3>Hệ quản trị cơ sở dữ liệu</h3>
-              <div class="card-details">
-                <span>⏱ 90 phút</span>
-                <span>📅 14:00 hôm nay</span>
-              </div>
-              <button class="btn-primary full-width">Vào thi (Demo) ➔</button>
-            </div>
-          </div>
-        </a>
-
-        
-        <a href="../screen_3_&_4/screen4.html" class="exam-card-link">
-          <div class="exam-card">
-            <div class="card-cover bg-green">
-              <div class="status-badge closed">📅 Đã đóng</div>
-              <div class="cover-icon">∑</div>
-            </div>
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="course-code gray">MAT201</span>
-                <span class="semester">Học kỳ 1 - 2024</span>
-              </div>
-              <h3>Đại số tuyến tính</h3>
-              <div class="card-details">
-                <span>⏱ 75 phút</span>
-                <span>📅 25/10/2024</span>
-              </div>
-              <button class="btn-outline full-width">Xem kết quả 👁</button>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-
-    
-    <section class="section-block practice-section">
-      <div class="section-header">
-        <h2 class="sub-header-icon"><span>💪</span> Luyện tập tự do</h2>
-        <div class="filter-tabs">
-          <button class="filter-tab active">Tất cả</button>
-          <button class="filter-tab">Tiếng Anh</button>
-          <button class="filter-tab">CNTT</button>
-          <button class="filter-tab">Khác</button>
-        </div>
-      </div>
-
-      <div class="practice-grid">
-        
-        <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
-          <div class="practice-card">
-            <div class="practice-icon bg-light-blue">A/あ</div>
-            <div class="practice-content">
-              <div class="practice-title-row">
-                <h4>Tiếng Anh chuyên ngành</h4>
-                <span class="arrow-up">↗</span>
-              </div>
-              <p>Luyện tập kỹ năng đọc hiểu và từ vựng chuyên ngành CNTT.</p>
-              <div class="practice-tags">
-                <span class="pt-tag">30 phút</span>
-                <span class="dot">•</span>
-                <span class="pt-tag">Không giới hạn</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        
-        <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
-          <div class="practice-card">
-            <div class="practice-icon bg-light-orange">HTML</div>
-            <div class="practice-content">
-              <div class="practice-title-row">
-                <h4>Lập trình Web cơ bản</h4>
-                <span class="arrow-up">↗</span>
-              </div>
-              <p>Ôn tập kiến thức HTML, CSS và JavaScript căn bản.</p>
-              <div class="practice-tags">
-                <span class="pt-tag">45 phút</span>
-                <span class="dot">•</span>
-                <span class="pt-tag">Không giới hạn</span>
-              </div>
-            </div>
-          </div>
-        </a>
-
-        
-        <a href="../screen_3_&_4/screen3.html" class="practice-card-link">
-          <div class="practice-card">
-            <div class="practice-icon bg-light-purple">🌐</div>
-            <div class="practice-content">
-              <div class="practice-title-row">
-                <h4>Mạng máy tính</h4>
-                <span class="arrow-up">↗</span>
-              </div>
-              <p>Các câu hỏi trắc nghiệm về mô hình OSI và giao thức TCP/IP.</p>
-              <div class="practice-tags">
-                <span class="pt-tag">15 phút</span>
-                <span class="dot">•</span>
-                <span class="pt-tag">Không giới hạn</span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    </section>
-  </main>
-
-  
-  <footer class="app-footer">
-    <div class="footer-container">
-      <div class="footer-left">
-        <img src="../assets/img/logo.png" alt="Logo" class="footer-logo">
-        <span>Hệ thống quản lý thi trực tuyến - Học viện Công nghệ Bưu chính Viễn thông</span>
-      </div>
-      <div class="footer-links">
-        <a href="#">Trợ giúp</a>
-        <a href="#">Điều khoản</a>
-        <a href="#">Liên hệ</a>
-      </div>
-    </div>
-  </footer>
-</body>
-
+  </body>
+  <script src="./app.js"></script>
 </html>
