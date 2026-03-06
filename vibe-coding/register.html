@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký | PTIT Exam Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .auth-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .auth-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top right, rgba(244, 63, 94, 0.15), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15), transparent 40%);
+            z-index: 0;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-logo {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), #e11d48);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 800;
+            margin: 0 auto 16px;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .auth-header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+
+        .auth-header p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 600;
+            margin-left: 5px;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+            color: #fb7185;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="auth-layout">
+        <div class="auth-bg"></div>
+        <div class="glass-panel auth-card">
+            <div class="auth-header">
+                <div class="auth-logo">P</div>
+                <h1>Tạo tài khoản mới</h1>
+                <p>Đăng ký để tham gia hệ thống thi trực tuyến</p>
+            </div>
+
+            <form action="./home.html">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Họ và tên</label>
+                        <input type="text" class="input-control" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Mã sinh viên</label>
+                        <input type="text" class="input-control" placeholder="B20DC..." required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" class="input-control" placeholder="sv@ptit.edu.vn" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" class="input-control" placeholder="••••••••" required>
+                </div>
+
+                <div style="margin-bottom: 24px; font-size: 0.85rem;">
+                    <label
+                        style="display: flex; align-items: flex-start; gap: 8px; cursor: pointer; color: var(--text-muted); line-height: 1.4;">
+                        <input type="checkbox" style="width:16px; height:16px; cursor:pointer; margin-top:2px;"
+                            required>
+                        <span>Tôi đồng ý với <a href="#" style="color:var(--primary)">Điều khoản sử dụng</a> và <a
+                                href="#" style="color:var(--primary)">Chính sách bảo mật</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1rem; padding: 14px;">
+                    Đăng ký ngay
+                    <span style="margin-left:8px">→</span>
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                Đã có tài khoản? <a href="./login.html">Đăng nhập ngay</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

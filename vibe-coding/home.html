@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ | PTIT Exam Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .hero-glass {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .hero-glass::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            margin-bottom: 12px;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            transition: var(--transition);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(244, 63, 94, 0.4);
+        }
+
+        .card-img {
+            height: 140px;
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1e1b4b;
+            /* deep violet bg */
+        }
+
+        .card-img.red {
+            background: #4c0519;
+        }
+
+        .card-img.green {
+            background: #064e3b;
+        }
+
+        .card-img .icon {
+            font-size: 3rem;
+            opacity: 0.15;
+            font-weight: 800;
+            font-family: var(--font-heading);
+        }
+
+        .status-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+        }
+
+        .card-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: rgba(244, 63, 94, 0.1);
+            padding: 4px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">P</div>
+                <div>
+                    <h2 style="font-size: 1.1rem; line-height: 1.1;">PTIT Demo</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Student Portal</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">
+                    <span>⌂</span> Trang chủ
+                </a>
+                <a href="#" class="nav-item">
+                    <span>📄</span> Bài thi của tôi
+                </a>
+                <a href="#" class="nav-item">
+                    <span>📊</span> Kết quả học tập
+                </a>
+                <div style="flex:1"></div>
+                <a href="./login.html" class="nav-item">
+                    <span>⎋</span> Đăng xuất
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main -->
+        <main class="main-wrapper">
+            <header class="topbar">
+                <div class="search-bar">
+                    <span style="opacity:0.5; margin-right:8px;">🔍</span>
+                    <input type="text" placeholder="Tìm kiếm môn học, kỳ thi...">
+                </div>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; font-weight: 600;">Nguyễn Văn A</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">B20DCCN001</div>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Nguyen+A&background=f43f5e&color=fff" alt="User"
+                        class="avatar">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div class="hero-glass animate-slide-up">
+                    <div class="hero-content">
+                        <span class="badge live" style="margin-bottom: 16px; display: inline-block;">📢 Thông báo</span>
+                        <h1>Chào mừng trở lại, <span class="text-gradient-primary">Nguyễn Văn A!</span></h1>
+                        <p>Bạn có <strong>2 kỳ thi</strong> sắp diễn ra trong tuần này. Hãy chuẩn bị thật nền tảng kiến
+                            thức vững chắc để đạt kết quả tốt nhất.</p>
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn btn-primary">Xem lịch thi</button>
+                            <button class="btn btn-glass">Tài liệu ôn tập</button>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title">✨ Kỳ thi dành cho bạn</h2>
+                <div class="card-grid">
+                    <!-- Card 1 -->
+                    <a href="./exam.html">
+                        <div class="glass-panel card">
+                            <div class="card-img red">
+                                <div class="badge live status-badge">● Đang diễn ra</div>
+                                <div class="icon">&lt;/&gt;</div>
+                            </div>
+                            <div class="card-body">
+                                <div><span class="card-tag">INT1340</span></div>
+                                <h3 class="card-title">Cấu trúc dữ liệu & Giải thuật</h3>
+                                <div class="card-meta">
+                                    <span>⏱ 60 phút</span>
+                                    <span>📄 50 câu hỏi</span>
+                                </div>
+                                <button class="btn btn-primary" style="width:100%">Vào thi ngay →</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="./exam.html">
+                        <div class="glass-panel card">
+                            <div class="card-img">
+                                <div class="badge upcoming status-badge">🕒 Sắp diễn ra</div>
+                                <div class="icon">{ }</div>
+                            </div>
+                            <div class="card-body">
+                                <div><span class="card-tag"
+                                        style="color:var(--accent); background:rgba(59,130,246,0.1)">INT1405</span>
+                                </div>
+                                <h3 class="card-title">Cơ sở dữ liệu</h3>
+                                <div class="card-meta">
+                                    <span>⏱ 90 phút</span>
+                                    <span>📅 Hôm nay, 14:00</span>
+                                </div>
+                                <button class="btn btn-glass" style="width:100%">Chưa mở</button>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Card 3 -->
+                    <a href="./result.html">
+                        <div class="glass-panel card">
+                            <div class="card-img green">
+                                <div class="badge closed status-badge">Đã đóng</div>
+                                <div class="icon">∑</div>
+                            </div>
+                            <div class="card-body">
+                                <div><span class="card-tag"
+                                        style="color:var(--success); background:rgba(16,185,129,0.1)">MAT201</span>
+                                </div>
+                                <h3 class="card-title">Đại số tuyến tính</h3>
+                                <div class="card-meta">
+                                    <span>⏱ 75 phút</span>
+                                    <span>📅 25/10/2024</span>
+                                </div>
+                                <button class="btn btn-glass" style="width:100%">Xem kết quả</button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

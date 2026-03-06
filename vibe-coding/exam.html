@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Làm bài thi | PTIT Exam Portal</title>
+    <style>
+        /* Bổ sung các biến CSS còn thiếu */
+        :root {
+            --primary: #f43f5e;
+            --border: #3f3f46;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --success: #10b981;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --transition: all 0.2s ease-in-out;
+            --font-heading: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: #09090b;
+            color: var(--text-main);
+            font-family: Arial, sans-serif;
+        }
+
+        /* Nút cơ bản */
+        .btn {
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #e11d48;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* CSS cũ của bạn giữ nguyên */
+        .exam-layout {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .exam-header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            background: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 10;
+        }
+
+        .exam-title-box {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .exam-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .timer-box {
+            background: rgba(244, 63, 94, 0.05);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+            box-shadow: 0 0 15px rgba(244, 63, 94, 0.1);
+        }
+
+        .exam-body {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .q-sidebar {
+            width: 300px;
+            background: rgba(24, 24, 27, 0.5);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .q-grid {
+            padding: 24px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        /* Tùy chỉnh thanh cuộn cho đẹp */
+        .q-grid::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .q-grid::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 10px;
+        }
+
+        .q-nav-btn {
+            aspect-ratio: 1;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .q-nav-btn:hover {
+            border-color: var(--text-muted);
+        }
+
+        .q-nav-btn.answered {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
+            color: #34d399;
+        }
+
+        .q-nav-btn.active {
+            border: 2px solid var(--primary);
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        .q-main {
+            flex: 1;
+            overflow-y: auto;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .q-card {
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .q-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(244, 63, 94, 0.15);
+            color: var(--primary);
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            box-shadow: 0 0 10px rgba(244, 63, 94, 0.1);
+        }
+
+        .q-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            padding: 20px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option-row:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(4px);
+        }
+
+        .option-row.selected {
+            background: rgba(244, 63, 94, 0.08);
+            border-color: var(--primary);
+            box-shadow: 0 4px 20px rgba(244, 63, 94, 0.15);
+        }
+
+        .opt-letter {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 16px;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .option-row.selected .opt-letter {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .opt-text {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .q-actions {
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto 0;
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="exam-layout">
+        <header class="exam-header">
+            <div class="exam-title-box">
+                <div class="exam-icon">&lt;/&gt;</div>
+                <div>
+                    <div
+                        style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">
+                        Đang thi</div>
+                    <div style="font-weight:600; font-size:1.1rem;">Cấu trúc dữ liệu & Giải thuật</div>
+                </div>
+            </div>
+            <div class="timer-box" id="exam-timer">42:15</div>
+            <a href="./result.html" class="btn btn-primary" style="padding: 10px 24px;">Nộp bài ngay</a>
+        </header>
+
+        <div class="exam-body">
+            <aside class="q-sidebar">
+                <div
+                    style="padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
+                    <strong style="font-size:0.9rem">Mục lục câu hỏi</strong>
+                    <span id="answered-count" style="font-size:0.8rem; color:var(--success)">3/50 Done</span>
+                </div>
+                <div class="q-grid" id="question-grid">
+                </div>
+            </aside>
+
+            <main class="q-main">
+                <div class="q-card">
+                    <div class="q-badge" id="current-q-badge">Câu hỏi 3 / 50</div>
+                    <div class="q-text">Thuật toán nào sau đây sử dụng kỹ thuật 'Divide and Conquer'?</div>
+
+                    <div class="options-list">
+                        <div class="option-row">
+                            <div class="opt-letter">A</div>
+                            <div class="opt-text">Bubble Sort</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="opt-letter">B</div>
+                            <div class="opt-text">Insertion Sort</div>
+                        </div>
+                        <div class="option-row">
+                            <div class="opt-letter">C</div>
+                            <div class="opt-text">Selection Sort</div>
+                        </div>
+                        <div class="option-row selected">
+                            <div class="opt-letter">D</div>
+                            <div class="opt-text">Merge Sort</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="q-actions">
+                    <button class="btn btn-glass" onclick="prevQuestion()">← Câu trước</button>
+                    <button class="btn btn-glass" onclick="nextQuestion()">Câu tiếp →</button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // 1. Xử lý đồng hồ đếm ngược
+        let timeLeft = 42 * 60 + 15; // 42 phút 15 giây
+        const timerElement = document.getElementById('exam-timer');
+
+        const countdown = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                alert("Đã hết thời gian làm bài!");
+                return;
+            }
+            timeLeft--;
+
+            // Tính toán phút và giây
+            let minutes = Math.floor(timeLeft / 60);
+            let seconds = timeLeft % 60;
+
+            // Định dạng chuỗi hiển thị mm:ss
+            timerElement.textContent =
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }, 1000);
+
+
+        // 2. Xử lý mục lục câu hỏi
+        const totalQuestions = 50;
+        let currentQuestion = 3;
+        const gridElement = document.getElementById('question-grid');
+        const badgeElement = document.getElementById('current-q-badge');
+
+        function renderGrid() {
+            gridElement.innerHTML = ''; // Xóa rỗng để tạo lại
+            for (let i = 1; i <= totalQuestions; i++) {
+                const btn = document.createElement('div');
+                btn.className = 'q-nav-btn';
+                btn.textContent = i;
+
+                // Giả lập câu 1, 2, 3 đã làm
+                if (i <= 3) {
+                    btn.classList.add('answered');
+                }
+
+                // Đánh dấu câu đang chọn
+                if (i === currentQuestion) {
+                    btn.classList.add('active');
+                }
+
+                // Bắt sự kiện click vào mục lục
+                btn.onclick = () => {
+                    currentQuestion = i;
+                    badgeElement.textContent = `Câu hỏi ${i} / ${totalQuestions}`;
+                    renderGrid(); // Render lại để cập nhật class 'active'
+                };
+
+                gridElement.appendChild(btn);
+            }
+        }
+
+        // Render mục lục lần đầu tiên
+        renderGrid();
+
+        // 3. Xử lý nút Câu trước / Câu tiếp
+        function prevQuestion() {
+            if (currentQuestion > 1) {
+                currentQuestion--;
+                badgeElement.textContent = `Câu hỏi ${currentQuestion} / ${totalQuestions}`;
+                renderGrid();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                badgeElement.textContent = `Câu hỏi ${currentQuestion} / ${totalQuestions}`;
+                renderGrid();
+            }
+        }
+
+        // 4. Xử lý chọn đáp án
+        const options = document.querySelectorAll('.option-row');
+        options.forEach(opt => {
+            opt.onclick = () => {
+                // Bỏ chọn tất cả các đáp án khác
+                options.forEach(o => o.classList.remove('selected'));
+                // Đánh dấu đáp án được click
+                opt.classList.add('selected');
+            };
+        });
+    </script>
+</body>
+
+</html>

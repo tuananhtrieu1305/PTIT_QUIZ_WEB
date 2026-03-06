@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | PTIT Exam Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .stat-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            bottom: -20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        }
+
+        .stat-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            color: #fff;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 24px;
+        }
+
+        .panel {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Simple list */
+        .action-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-sm);
+        }
+
+        .action-item:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <!-- Admin Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">A</div>
+                <div>
+                    <h2 style="font-size: 1.1rem; line-height: 1.1;">Admin Portal</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Hệ thống quản trị</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="./admin.html" class="nav-item active">
+                    <span>📊</span> Tổng quan
+                </a>
+                <a href="./exams.html" class="nav-item">
+                    <span>📝</span> Quản lý kỳ thi
+                </a>
+                <a href="./students.html" class="nav-item">
+                    <span>👥</span> Quản lý sinh viên
+                </a>
+                <a href="./admin-stats.html" class="nav-item">
+                    <span>📈</span> Báo cáo thống kê
+                </a>
+                <div style="flex:1"></div>
+                <a href="./admin-login.html" class="nav-item">
+                    <span>⎋</span> Đăng xuất
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="topbar">
+                <div class="search-bar">
+                    <span style="opacity:0.5; margin-right:8px;">🔍</span>
+                    <input type="text" placeholder="Tìm kiếm...">
+                </div>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; font-weight: 600;">System Admin</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">admin@ptit.edu.vn</div>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=8b5cf6&color=fff" alt="Admin"
+                        class="avatar" style="border-color: #8b5cf6">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <h1 style="font-size: 2rem; margin-bottom: 24px;">Tổng quan hệ thống</h1>
+
+                <div class="stat-cards animate-slide-up">
+                    <div class="stat-card" style="border-top: 3px solid #3b82f6;">
+                        <div class="stat-title">Sinh viên</div>
+                        <div class="stat-value">1,245</div>
+                        <div style="color: #10b981; font-size: 0.8rem; margin-top: 8px;">↑ 12% so với tuần trước</div>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #8b5cf6;">
+                        <div class="stat-title">Tổng kỳ thi</div>
+                        <div class="stat-value">48</div>
+                        <div style="color: #10b981; font-size: 0.8rem; margin-top: 8px;">↑ 3 kỳ thi mới</div>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #10b981;">
+                        <div class="stat-title">Đang diễn ra</div>
+                        <div class="stat-value text-gradient">2</div>
+                        <div style="color: #f59e0b; font-size: 0.8rem; margin-top: 8px;">Đang giám sát...</div>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f43f5e;">
+                        <div class="stat-title">Cảnh báo vi phạm</div>
+                        <div class="stat-value">0</div>
+                        <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 8px;">Hệ thống an toàn</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid animate-slide-up" style="animation-delay: 0.1s;">
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title">Hoạt động gần đây</div>
+                            <button class="btn btn-glass" style="padding: 6px 12px; font-size: 0.8rem;">Xem tất
+                                cả</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Hành động</th>
+                                    <th>Người dùng</th>
+                                    <th>Thời gian</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Tạo kỳ thi mới</td>
+                                    <td>Admin</td>
+                                    <td>10 phút trước</td>
+                                    <td><span class="badge live">Thành công</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Nộp bài thi C++</td>
+                                    <td>B20DCCN001</td>
+                                    <td>25 phút trước</td>
+                                    <td><span class="badge closed">Hoàn thành</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Cập nhật danh sách SV</td>
+                                    <td>Admin</td>
+                                    <td>1 giờ trước</td>
+                                    <td><span class="badge live">Thành công</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div class="panel-title">Kỳ thi sắp tới</div>
+                        </div>
+                        <div class="action-list">
+                            <div class="action-item">
+                                <div>
+                                    <div style="font-weight: 600;">INT1405 - CSDL</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">14:00 hôm nay</div>
+                                </div>
+                                <div class="badge upcoming">Sắp tới</div>
+                            </div>
+                            <div class="action-item">
+                                <div>
+                                    <div style="font-weight: 600;">INT1340 - CTDL&GT</div>
+                                    <div style="font-size: 0.8rem; color: var(--text-muted);">08:00 ngày mai</div>
+                                </div>
+                                <div class="badge closed">Chờ duyệt</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

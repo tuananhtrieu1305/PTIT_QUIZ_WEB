@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sinh viên | Admin Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            background: var(--bg-glass);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+
+        .user-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">A</div>
+                <div>
+                    <h2 style="font-size: 1.1rem; line-height: 1.1;">Admin Portal</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Hệ thống quản trị</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="./admin.html" class="nav-item">
+                    <span>📊</span> Tổng quan
+                </a>
+                <a href="./exams.html" class="nav-item">
+                    <span>📝</span> Quản lý kỳ thi
+                </a>
+                <a href="./students.html" class="nav-item active">
+                    <span>👥</span> Quản lý sinh viên
+                </a>
+                <a href="./admin-stats.html" class="nav-item">
+                    <span>📈</span> Báo cáo thống kê
+                </a>
+                <div style="flex:1"></div>
+                <a href="./admin-login.html" class="nav-item">
+                    <span>⎋</span> Đăng xuất
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="topbar">
+                <div class="search-bar">
+                    <span style="opacity:0.5; margin-right:8px;">🔍</span>
+                    <input type="text" placeholder="Tìm kiếm tài khoản, MSSV...">
+                </div>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; font-weight: 600;">System Admin</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">admin@ptit.edu.vn</div>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=8b5cf6&color=fff" alt="Admin"
+                        class="avatar" style="border-color: #8b5cf6">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
+                    <div>
+                        <h1 style="font-size: 2rem; margin-bottom: 8px;">Quản lý Sinh viên</h1>
+                        <p style="color: var(--text-muted);">Quản lý tài khoản và phân quyền người dùng trong hệ thống.
+                        </p>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-glass">Nhập Excel</button>
+                        <button class="btn btn-primary"
+                            style="background: #10b981; box-shadow: 0 4px 15px rgba(16,185,129,0.3);">+ Thêm sinh
+                            viên</button>
+                    </div>
+                </div>
+
+                <div class="toolbar animate-slide-up">
+                    <div style="display: flex; gap: 12px;">
+                        <select class="input-control" style="width: 200px; padding: 10px;">
+                            <option>Lọc theo lớp</option>
+                            <option>D20CQCN01-B</option>
+                            <option>D20CQCN02-B</option>
+                        </select>
+                        <select class="input-control" style="width: 200px; padding: 10px;">
+                            <option>Chuyên ngành</option>
+                            <option>Công nghệ thông tin</option>
+                            <option>An toàn thông tin</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-glass" style="padding: 10px 16px;">⟳ Làm mới</button>
+                </div>
+
+                <div class="glass-panel animate-slide-up" style="animation-delay: 0.1s;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sinh viên</th>
+                                <th>Mã SV</th>
+                                <th>Lớp</th>
+                                <th>Tình trạng</th>
+                                <th>Trạng thái hoạt động</th>
+                                <th style="text-align: right;">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="user-row">
+                                        <img src="https://ui-avatars.com/api/?name=Nguyen+Van+A&background=f43f5e&color=fff"
+                                            alt="A" style="width: 36px; height: 36px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: 600;">Nguyễn Văn A</div>
+                                            <div style="font-size: 0.8rem; color: var(--text-muted);">sv1@ptit.edu.vn
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>B20DCCN001</td>
+                                <td>D20CQCN01-B</td>
+                                <td>Bình thường</td>
+                                <td><span class="badge live">Active</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-glass"
+                                        style="padding: 6px 12px; font-size: 0.8rem;">Sửa</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-row">
+                                        <img src="https://ui-avatars.com/api/?name=Tran+B&background=3b82f6&color=fff"
+                                            alt="B" style="width: 36px; height: 36px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: 600;">Trần Thị B</div>
+                                            <div style="font-size: 0.8rem; color: var(--text-muted);">sv2@ptit.edu.vn
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>B20DCCN002</td>
+                                <td>D20CQCN01-B</td>
+                                <td>Bình thường</td>
+                                <td><span class="badge live">Active</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-glass"
+                                        style="padding: 6px 12px; font-size: 0.8rem;">Sửa</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="user-row">
+                                        <img src="https://ui-avatars.com/api/?name=Le+V+C&background=94a3b8&color=fff"
+                                            alt="C" style="width: 36px; height: 36px; border-radius: 50%;">
+                                        <div>
+                                            <div style="font-weight: 600;">Lê Văn C</div>
+                                            <div style="font-size: 0.8rem; color: var(--text-muted);">sv3@ptit.edu.vn
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>B20DCCN003</td>
+                                <td>D20CQCN02-B</td>
+                                <td><span style="color: #f43f5e; font-weight: 500;">Cấm thi</span></td>
+                                <td><span class="badge closed"
+                                        style="color: #ef4444; border-color: rgba(239,68,68,0.2); background: rgba(239,68,68,0.1)">Locked</span>
+                                </td>
+                                <td style="text-align: right;">
+                                    <a href="./admin-student-detail.html" class="btn btn-glass"
+                                        style="padding: 6px 12px; font-size: 0.8rem; text-decoration: none;">Chi
+                                        tiết</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết Sinh viên | Admin Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .student-header {
+            background: var(--bg-glass);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-header::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05));
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-info {
+            flex: 1;
+            z-index: 1;
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .profile-id {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .info-value {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .history-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: var(--transition);
+        }
+
+        .history-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .history-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--border);
+            margin-bottom: 16px;
+        }
+
+        .history-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* In report CSS */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+
+            .sidebar,
+            .topbar,
+            .btn {
+                display: none !important;
+            }
+
+            .main-wrapper {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .content-area {
+                max-width: 100% !important;
+            }
+
+            .student-header {
+                border: 1px solid #ccc;
+                background: transparent;
+            }
+
+            .history-card {
+                border: 1px solid #ccc;
+                break-inside: avoid;
+            }
+
+            .text-gradient {
+                color: black !important;
+                -webkit-text-fill-color: black !important;
+            }
+
+            h1,
+            h2,
+            h3 {
+                color: black !important;
+            }
+
+            .badge {
+                border: 1px solid #ccc;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">A</div>
+                <div>
+                    <h2 style="font-size: 1.1rem; line-height: 1.1;">Admin Portal</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Hệ thống quản trị</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="./admin.html" class="nav-item"><span>📊</span> Tổng quan</a>
+                <a href="./exams.html" class="nav-item"><span>📝</span> Quản lý kỳ thi</a>
+                <a href="./students.html" class="nav-item active"><span>👥</span> Quản lý sinh viên</a>
+                <a href="./admin-stats.html" class="nav-item"><span>📈</span> Báo cáo thống kê</a>
+                <div style="flex:1"></div>
+                <a href="./admin-login.html" class="nav-item"><span>⎋</span> Đăng xuất</a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="topbar">
+                <div style="font-size: 1.1rem; font-weight: 600;">
+                    <a href="./students.html" style="color:var(--text-muted); margin-right:8px;">← Thư mục Sinh viên</a>
+                    Hồ sơ chi tiết
+                </div>
+                <div class="search-bar" style="width: 300px;">
+                    <input type="text" placeholder="Tìm bằng Tên hoặc MSSV khác..." style="font-size:0.85rem">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
+                    <div>
+                        <h1 style="font-size: 2rem; margin-bottom: 8px;">Kết quả học tập cá nhân</h1>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button class="btn btn-glass" onclick="window.print()">🖨 In báo cáo PDF</button>
+                        <button class="btn btn-primary" style="background:var(--accent)">Sửa thông tin</button>
+                    </div>
+                </div>
+
+                <div class="student-header animate-slide-up">
+                    <img src="https://ui-avatars.com/api/?name=Le+Tuan&background=10b981&color=fff&size=256"
+                        alt="Avatar" class="profile-img">
+                    <div class="profile-info">
+                        <div style="display: flex; justify-content: space-between;">
+                            <div class="profile-name">Lê Hoàng Tuấn
+                                <span class="badge live"
+                                    style="font-size: 0.75rem; vertical-align: middle; margin-left: 10px;">Hoạt
+                                    động</span>
+                            </div>
+                            <div><span style="font-size: 2rem; font-weight: 800; color: #10b981;">9.8</span>
+                                <div style="font-size:0.8rem; color:var(--text-muted); text-align:right">Điểm TB Hệ
+                                    thống</div>
+                            </div>
+                        </div>
+                        <div class="profile-id">B20DCCN123</div>
+
+                        <div class="info-grid">
+                            <div class="info-item"><span class="info-label">Email</span><span
+                                    class="info-value">tuan.le@student.ptit.edu.vn</span></div>
+                            <div class="info-item"><span class="info-label">Lớp sinh hoạt</span><span
+                                    class="info-value">D20CQCN01-B</span></div>
+                            <div class="info-item"><span class="info-label">Khoa / Ngành</span><span
+                                    class="info-value">Công nghệ thông tin</span></div>
+                            <div class="info-item"><span class="info-label">Tham gia thi</span><span
+                                    class="info-value">5 kỳ thi</span></div>
+                            <div class="info-item"><span class="info-label">Tỷ lệ hoàn thành</span><span
+                                    class="info-value text-gradient-primary">100%</span></div>
+                            <div class="info-item"><span class="info-label">Vi phạm kỷ luật</span><span
+                                    class="info-value">- Không có -</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 style="font-size: 1.4rem; margin-bottom: 20px;">Lịch sử tham gia kỳ thi</h2>
+
+                <div class="history-list animate-slide-up" style="animation-delay: 0.1s;">
+
+                    <div class="history-card">
+                        <div class="history-header">
+                            <div>
+                                <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 4px;">INT1340 - Cấu trúc
+                                    dữ liệu & Giải thuật</div>
+                                <div class="history-meta">
+                                    <span>📅 25/10/2024, 08:00</span>
+                                    <span>⏱ Thời gian làm: 42'15" / 60'</span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="badge live" style="border-color: transparent">Hoàn thành</div>
+                                <div style="font-size: 1.8rem; font-weight: 700; color: #10b981; margin-top: 8px;">9.5
+                                </div>
+                            </div>
+                        </div>
+
+                        <details style="cursor: pointer;">
+                            <summary style="font-weight: 600; color: var(--accent); padding: 8px 0; outline: none;">Xem
+                                chi tiết bài làm (Mở rộng)</summary>
+                            <div style="padding-top: 16px;">
+                                <!-- Chi tiết câu trả lời -->
+                                <div
+                                    style="background: rgba(0,0,0,0.2); padding: 16px; border-radius: 8px; margin-bottom: 8px;">
+                                    <div style="font-weight: 600; margin-bottom: 8px;">1. Thuật toán nào sau đây sử dụng
+                                        kỹ thuật 'Divide and Conquer'?</div>
+                                    <div style="display: flex; gap: 16px;">
+                                        <div style="color: #10b981; font-weight: 600;">✓ Sinh viên chọn: Merge Sort
+                                        </div>
+                                        <div style="color: var(--text-muted);">(Đáp án đúng: Merge Sort)</div>
+                                    </div>
+                                </div>
+                                <div
+                                    style="background: rgba(244,63,94,0.05); border-left: 3px solid #f43f5e; padding: 16px; border-radius: 8px; margin-bottom: 8px;">
+                                    <div style="font-weight: 600; margin-bottom: 8px;">2. Trong đồ thị, thuật toán
+                                        Dijkstra dùng để làm gì?</div>
+                                    <div style="display: flex; gap: 16px;">
+                                        <div style="color: #f43f5e; font-weight: 600;">✗ Sinh viên chọn: Tìm chu trình
+                                            Euler</div>
+                                        <div style="color: #10b981; font-weight: 600;">(Đáp án đúng: Tìm đường đi ngắn
+                                            nhất)</div>
+                                    </div>
+                                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
+                                        <strong>Giải thích:</strong> Thuật toán Dijkstra giải quyết bài toán đường đi
+                                        ngắn nhất nguồn đơn trên đồ thị có trọng số không âm...</div>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="history-card">
+                        <div class="history-header">
+                            <div>
+                                <div style="font-size: 1.2rem; font-weight: 600; margin-bottom: 4px;">INT1405 - Cơ sở dữ
+                                    liệu</div>
+                                <div class="history-meta">
+                                    <span>📅 15/09/2024, 14:00</span>
+                                    <span>⏱ Thời gian làm: 85'00" / 90'</span>
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="badge live" style="border-color: transparent">Hoàn thành</div>
+                                <div style="font-size: 1.8rem; font-weight: 700; color: #10b981; margin-top: 8px;">10.0
+                                </div>
+                            </div>
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); font-style: italic;">Tuyệt đối không
+                            sai câu nào.</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý kỳ thi | Admin Portal</title>
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            background: var(--bg-glass);
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6);">A</div>
+                <div>
+                    <h2 style="font-size: 1.1rem; line-height: 1.1;">Admin Portal</h2>
+                    <span style="font-size: 0.75rem; color: var(--text-muted);">Hệ thống quản trị</span>
+                </div>
+            </div>
+            <nav class="nav-menu">
+                <a href="./admin.html" class="nav-item">
+                    <span>📊</span> Tổng quan
+                </a>
+                <a href="./exams.html" class="nav-item active">
+                    <span>📝</span> Quản lý kỳ thi
+                </a>
+                <a href="./students.html" class="nav-item">
+                    <span>👥</span> Quản lý sinh viên
+                </a>
+                <a href="./admin-stats.html" class="nav-item">
+                    <span>📈</span> Báo cáo thống kê
+                </a>
+                <div style="flex:1"></div>
+                <a href="./admin-login.html" class="nav-item">
+                    <span>⎋</span> Đăng xuất
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-wrapper">
+            <header class="topbar">
+                <div class="search-bar">
+                    <span style="opacity:0.5; margin-right:8px;">🔍</span>
+                    <input type="text" placeholder="Tìm kiếm kỳ thi...">
+                </div>
+                <div class="user-profile">
+                    <div style="text-align: right;">
+                        <div style="font-size: 0.9rem; font-weight: 600;">System Admin</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted);">admin@ptit.edu.vn</div>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=8b5cf6&color=fff" alt="Admin"
+                        class="avatar" style="border-color: #8b5cf6">
+                </div>
+            </header>
+
+            <div class="content-area">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px;">
+                    <div>
+                        <h1 style="font-size: 2rem; margin-bottom: 8px;">Quản lý kỳ thi</h1>
+                        <p style="color: var(--text-muted);">Tạo mới, chỉnh sửa và theo dõi các kỳ thi trong hệ thống.
+                        </p>
+                    </div>
+                    <a href="./admin-exam-edit.html" class="btn btn-primary"
+                        style="background: linear-gradient(135deg, #3b82f6, #2563eb); text-decoration: none; display: inline-flex; align-items: center; justify-content: center;">+
+                        Tạo kỳ thi mới</a>
+                </div>
+
+                <div class="toolbar animate-slide-up">
+                    <div style="display: flex; gap: 12px;">
+                        <select class="input-control" style="width: 200px; padding: 10px;">
+                            <option>Tất cả trạng thái</option>
+                            <option>Đang diễn ra</option>
+                            <option>Sắp tới</option>
+                            <option>Đã kết thúc</option>
+                        </select>
+                        <select class="input-control" style="width: 200px; padding: 10px;">
+                            <option>Lọc theo môn học</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-glass" style="padding: 10px 16px;">⟳ Làm mới</button>
+                </div>
+
+                <div class="glass-panel animate-slide-up" style="animation-delay: 0.1s;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Mã kỳ thi</th>
+                                <th>Tên môn học</th>
+                                <th>Thời gian</th>
+                                <th>Số lượng SV</th>
+                                <th>Trạng thái</th>
+                                <th style="text-align: right;">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>INT1340</strong></td>
+                                <td>Cấu trúc dữ liệu & Giải thuật</td>
+                                <td>Hôm nay, 08:00 (60 phút)</td>
+                                <td>120/120</td>
+                                <td><span class="badge live">Đang diễn ra</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-glass" style="padding: 6px 12px; font-size: 0.8rem;">Giám
+                                        sát</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>INT1405</strong></td>
+                                <td>Cơ sở dữ liệu</td>
+                                <td>Hôm nay, 14:00 (90 phút)</td>
+                                <td>0/150</td>
+                                <td><span class="badge upcoming">Sắp diễn ra</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-glass"
+                                        style="padding: 6px 12px; font-size: 0.8rem;">Sửa</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>MAT201</strong></td>
+                                <td>Đại số tuyến tính</td>
+                                <td>25/10/2024 (75 phút)</td>
+                                <td>115/120</td>
+                                <td><span class="badge closed">Đã kết thúc</span></td>
+                                <td style="text-align: right;">
+                                    <button class="btn btn-glass" style="padding: 6px 12px; font-size: 0.8rem;">Báo
+                                        cáo</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>
