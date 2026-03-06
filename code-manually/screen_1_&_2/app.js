@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Hamburger menu toggle
+  const hamburger = document.getElementById("nav-hamburger");
+  const navCollapse = document.getElementById("nav-collapse");
+
+  if (hamburger && navCollapse) {
+    hamburger.addEventListener("click", () => {
+      hamburger.classList.toggle("active");
+      navCollapse.classList.toggle("active");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!hamburger.contains(e.target) && !navCollapse.contains(e.target)) {
+        hamburger.classList.remove("active");
+        navCollapse.classList.remove("active");
+      }
+    });
+  }
+
   const roleTabs = document.querySelectorAll(".role-tab");
 
   if (roleTabs.length > 0) {

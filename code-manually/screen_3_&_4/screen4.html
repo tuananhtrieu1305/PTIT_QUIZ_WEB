@@ -23,7 +23,10 @@
                 <div class="nav-brand-sub">HỆ THỐNG THI TRỰC TUYẾN</div>
             </div>
         </div>
-        <nav>
+        <button class="result-hamburger" id="result-hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+        <nav id="result-nav">
             <a href="../screen_1_&_2/home.html">Trang chủ</a>
             <a href="#" class="active">Bài thi của tôi</a>
             <a href="#">Hồ sơ</a>
@@ -202,6 +205,16 @@
                 extra.style.display = extra.style.display === 'none' ? 'block' : 'none';
                 btn.textContent = extra.style.display === 'none' ? 'Xem thêm câu hỏi ▾' : 'Thu gọn ▲';
             }
+        }
+
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('result-hamburger');
+        const nav = document.getElementById('result-nav');
+        if (hamburger && nav) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                nav.classList.toggle('open');
+            });
         }
     </script>
 </body>

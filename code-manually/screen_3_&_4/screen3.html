@@ -29,7 +29,10 @@
             <div class="timer-label">Thời gian còn lại</div>
         </div>
 
-        <button class="btn-submit" id="btn-open-submit-modal">Nộp bài &rarr;</button>
+        <div class="exam-topbar-right">
+            <button class="btn-submit" id="btn-open-submit-modal">Nộp bài &rarr;</button>
+            <button class="btn-toggle-sidebar" id="btn-toggle-sidebar" aria-label="Danh sách câu hỏi">☰</button>
+        </div>
     </div>
 
     
@@ -284,6 +287,24 @@
         renderGrid();
         renderQuestion();
         updateAnsweredCount();
+
+        // Mobile sidebar toggle
+        const toggleSidebarBtn = document.getElementById('btn-toggle-sidebar');
+        const sidebar = document.querySelector('.question-sidebar');
+        const overlay = document.createElement('div');
+        overlay.className = 'sidebar-overlay';
+        document.body.appendChild(overlay);
+
+        if (toggleSidebarBtn && sidebar) {
+            toggleSidebarBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('active');
+            });
+            overlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        }
     </script>
 </body>
 
