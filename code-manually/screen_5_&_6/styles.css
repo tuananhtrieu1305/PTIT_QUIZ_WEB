@@ -22,7 +22,6 @@ body {
   height: 100vh;
 }
 
-
 .sidebar {
   width: 260px;
   background-color: var(--sidebar-bg);
@@ -156,13 +155,16 @@ body {
   cursor: pointer;
   margin: 0 auto 10px auto;
   transition: all 0.2s linear;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logout-btn:hover {
   background: #4b5563;
   color: white;
 }
-
 
 .main-content {
   flex-grow: 1;
@@ -281,7 +283,6 @@ body {
   color: #374151;
 }
 
-
 .dashboard-layout {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -329,7 +330,6 @@ body {
   text-decoration: none;
   font-size: 0.9rem;
 }
-
 
 .data-table {
   width: 100%;
@@ -448,7 +448,6 @@ body {
   color: #92400e;
 }
 
-
 .quick-actions-card {
   background: var(--ptit-red);
   color: white;
@@ -470,7 +469,6 @@ body {
 .btn-action:hover {
   background: rgba(255, 255, 255, 0.3);
 }
-
 
 .css-bar-chart {
   display: flex;
@@ -911,7 +909,6 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-
 .student-profile-header {
   display: flex;
   align-items: center;
@@ -1051,7 +1048,6 @@ body {
   background-color: var(--ptit-red-dark);
 }
 
-
 .question-card {
   background-color: #f9fafb;
   border: 1px solid var(--border-color);
@@ -1093,159 +1089,4 @@ body {
   accent-color: var(--ptit-red);
   width: 16px;
   height: 16px;
-}
-
-/* RESPONSIVE DESIGN FOR ADMIN PAGES */
-@media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
-    overflow-y: auto;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 10px;
-  }
-
-  .logo {
-    display: none;
-  }
-
-  .nav-menu {
-    flex-direction: row;
-    padding: 0;
-    gap: 5px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .nav-title {
-    display: none;
-  }
-
-  .nav-item {
-    padding: 8px;
-    margin: 5px;
-    border-radius: 6px;
-  }
-
-  .nav-item span {
-    display: none;
-    /* Hide text, keep icons */
-  }
-
-  .user-profile {
-    display: none;
-  }
-
-  .main-content {
-    padding: 15px;
-  }
-
-  .top-header {
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px 0;
-  }
-
-  .header-actions {
-    width: 100%;
-  }
-
-  .content-wrapper {
-    padding-top: 10px;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-
-  .dashboard-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .charts-row {
-    grid-template-columns: 1fr;
-  }
-
-  .form-grid,
-  .answers-list {
-    grid-template-columns: 1fr;
-  }
-
-  .calendar-days span {
-    width: 28px;
-    height: 28px;
-    font-size: 0.8rem;
-  }
-
-  /* Responsive Table styling */
-  .data-table,
-  .data-table thead,
-  .data-table tbody,
-  .data-table th,
-  .data-table td,
-  .data-table tr {
-    display: block;
-  }
-
-  .data-table thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-
-  .data-table tr {
-    border: 1px solid var(--border-color);
-    margin-bottom: 15px;
-    border-radius: 8px;
-    background: #fff;
-  }
-
-  .data-table td {
-    border: none !important;
-    border-bottom: 1px solid #f3f4f6 !important;
-    position: relative;
-    padding-left: 45% !important;
-    min-height: 40px;
-    text-align: right;
-  }
-
-  .data-table td:last-child {
-    border-bottom: none !important;
-  }
-
-  .data-table td:before {
-    position: absolute;
-    top: 15px;
-    left: 10px;
-    width: 40%;
-    white-space: nowrap;
-    text-align: left;
-    font-weight: 600;
-    color: var(--text-muted);
-    font-size: 0.8rem;
-  }
-
-  .data-table .first-td,
-  .data-table .other-td div {
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
-  }
-
-  .data-table .first-td figure {
-    display: none;
-    /* Hide avatar in mobile table to save space */
-  }
-
-  .student-profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
 }
