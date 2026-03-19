@@ -14,8 +14,8 @@
         }
 
         .score-card {
-            background: linear-gradient(135deg, rgba(244, 63, 94, 0.1), rgba(0, 0, 0, 0.4));
-            border: 1px solid rgba(244, 63, 94, 0.2);
+            background: linear-gradient(135deg, rgba(205, 32, 39, 0.1), rgba(0, 0, 0, 0.4));
+            border: 1px solid rgba(205, 32, 39, 0.2);
             border-radius: var(--radius-lg);
             padding: 50px;
             display: flex;
@@ -30,7 +30,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle at 80% 50%, rgba(244, 63, 94, 0.15) 0%, transparent 60%);
+            background: radial-gradient(circle at 80% 50%, rgba(205, 32, 39, 0.15) 0%, transparent 60%);
             pointer-events: none;
         }
 
@@ -49,12 +49,12 @@
             height: 180px;
             border-radius: 50%;
             background: rgba(0, 0, 0, 0.5);
-            border: 8px solid rgba(244, 63, 94, 0.3);
+            border: 8px solid rgba(205, 32, 39, 0.3);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 40px rgba(244, 63, 94, 0.2);
+            box-shadow: 0 0 40px rgba(205, 32, 39, 0.2);
             position: relative;
         }
 
@@ -156,15 +156,15 @@
         }
 
         .review-opt.correct {
-            background: rgba(16, 185, 129, 0.15);
-            border-color: #10b981;
-            color: #34d399;
+            background: rgba(205, 32, 39, 0.15);
+            border-color: #cd2027;
+            color: #e33e45;
         }
 
         .review-opt.wrong {
-            background: rgba(244, 63, 94, 0.15);
+            background: rgba(205, 32, 39, 0.15);
             border-color: var(--primary);
-            color: #fb7185;
+            color: #cd2027;
         }
 
         .tag {
@@ -205,21 +205,21 @@
 
         <div class="stats-row">
             <div class="stat-box">
-                <div class="stat-icon" style="background: rgba(16,185,129,0.15); color: #10b981;">✔</div>
+                <div class="stat-icon" style="background: rgba(205, 32, 39,0.15); color: #cd2027;">✔</div>
                 <div>
                     <div class="stat-val">30<span style="font-size:0.9rem; color:var(--text-muted)">/50</span></div>
                     <div class="stat-label">Câu đúng</div>
                 </div>
             </div>
             <div class="stat-box">
-                <div class="stat-icon" style="background: rgba(59,130,246,0.15); color: #3b82f6;">⏱</div>
+                <div class="stat-icon" style="background: rgba(205, 32, 39,0.15); color: #cd2027;">⏱</div>
                 <div>
                     <div class="stat-val">42:15</div>
                     <div class="stat-label">Thời gian làm bài</div>
                 </div>
             </div>
             <div class="stat-box">
-                <div class="stat-icon" style="background: rgba(245,158,11,0.15); color: #fbbf24;">🏆</div>
+                <div class="stat-icon" style="background: rgba(205, 32, 39,0.15); color: #e33e45;">🏆</div>
                 <div>
                     <div class="stat-val">Top 5%</div>
                     <div class="stat-label">Thứ hạng</div>
@@ -235,11 +235,11 @@
             <div class="review-opt">B. Insertion Sort</div>
             <div class="review-opt correct">
                 C. Merge Sort
-                <span class="tag" style="color:#10b981">✓ Đáp án đúng</span>
+                <span class="tag" style="color:#cd2027">✓ Đáp án đúng</span>
             </div>
             <div class="review-opt wrong">
                 D. Selection Sort
-                <span class="tag" style="color:#fb7185">✗ Câu trả lời của bạn</span>
+                <span class="tag" style="color:#cd2027">✗ Câu trả lời của bạn</span>
             </div>
             <div
                 style="margin-top: 16px; padding: 16px; background: rgba(255,255,255,0.05); border-left: 3px solid var(--primary); font-size: 0.9rem; color: var(--text-muted); border-radius: 4px;">
@@ -253,7 +253,7 @@
             <div class="review-opt">A. Queue</div>
             <div class="review-opt correct">
                 B. Stack
-                <span class="tag" style="color:#10b981">✓ Đáp án đúng & Bạn đã chọn</span>
+                <span class="tag" style="color:#cd2027">✓ Đáp án đúng & Bạn đã chọn</span>
             </div>
             <div class="review-opt">C. Linked List</div>
             <div class="review-opt">D. Tree</div>

@@ -1,0 +1,432 @@
+{
+  "info": {
+    "name": "PTIT Quiz Backend - Vibecoding Version",
+    "description": "API Collection for PTIT Quiz System - Vibecoding Edition",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"student_new\",\n  \"email\": \"student_new@ptit.edu.vn\",\n  \"password\": \"student123\",\n  \"confirmPassword\": \"student123\",\n  \"fullName\": \"Test Student\",\n  \"role\": \"student\",\n  \"studentId\": \"B20DCCN999\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"student1\",\n  \"password\": \"student123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/auth/me",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "auth", "me"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Exams - Student",
+      "item": [
+        {
+          "name": "Get All Exams",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/exams?search=javascript&examType=quiz",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "exams"],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "javascript"
+                },
+                {
+                  "key": "examType",
+                  "value": "quiz"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Exam By ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/exams/EXAM_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "exams", "EXAM_ID"]
+            }
+          }
+        },
+        {
+          "name": "Submit Exam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"examId\": \"EXAM_ID\",\n  \"answers\": [\n    {\n      \"questionId\": \"QUESTION_ID_1\",\n      \"selectedAnswer\": \"A\"\n    },\n    {\n      \"questionId\": \"QUESTION_ID_2\",\n      \"selectedAnswer\": \"true\"\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/exams/submit",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "exams", "submit"]
+            }
+          }
+        },
+        {
+          "name": "Get My Results",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/exams/my/results",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "exams", "my", "results"]
+            }
+          }
+        },
+        {
+          "name": "Get Result Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/exams/result/RESULT_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "exams", "result", "RESULT_ID"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Dashboard",
+      "item": [
+        {
+          "name": "Get Dashboard Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/dashboard/stats",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "dashboard", "stats"]
+            }
+          }
+        },
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/users?role=student&search=student",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "users"],
+              "query": [
+                {
+                  "key": "role",
+                  "value": "student"
+                },
+                {
+                  "key": "search",
+                  "value": "student"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin Exam Management",
+      "item": [
+        {
+          "name": "Get All Exams",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams"]
+            }
+          }
+        },
+        {
+          "name": "Create Exam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Final Exam - Advanced JS\",\n  \"description\": \"Final examination covering all JavaScript modules\",\n  \"examType\": \"final\",\n  \"accessType\": \"scheduled\",\n  \"startTime\": \"2024-03-25T10:00:00Z\",\n  \"endTime\": \"2024-03-25T13:00:00Z\",\n  \"duration\": 180,\n  \"totalQuestions\": 20,\n  \"passingScore\": 70,\n  \"showResults\": true,\n  \"showAnswers\": false,\n  \"randomizeQuestions\": true\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams"]
+            }
+          }
+        },
+        {
+          "name": "Update Exam",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Updated Exam Title\",\n  \"passingScore\": 75\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams/EXAM_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams", "EXAM_ID"]
+            }
+          }
+        },
+        {
+          "name": "Delete Exam",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams/EXAM_ID",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams", "EXAM_ID"]
+            }
+          }
+        },
+        {
+          "name": "Add Question to Exam",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"questionText\": \"What is a closure in JavaScript?\",\n  \"questionType\": \"multiple-choice\",\n  \"options\": [\n    {\"id\": \"A\", \"text\": \"A function with access to outer scope\", \"isCorrect\": true},\n    {\"id\": \"B\", \"text\": \"A type of loop\", \"isCorrect\": false},\n    {\"id\": \"C\", \"text\": \"A CSS property\", \"isCorrect\": false}\n  ],\n  \"correctAnswer\": \"A\",\n  \"explanation\": \"A closure is a function that has access to variables from its outer scope\",\n  \"points\": 2,\n  \"difficulty\": \"hard\",\n  \"order\": 1\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams/EXAM_ID/questions",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams", "EXAM_ID", "questions"]
+            }
+          }
+        },
+        {
+          "name": "Get Exam Statistics",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer ADMIN_TOKEN",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:5001/api/v1/admin/exams/EXAM_ID/statistics",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "v1", "admin", "exams", "EXAM_ID", "statistics"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:5001/api/v1/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5001",
+          "path": ["api", "v1", "health"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "TOKEN",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "ADMIN_TOKEN",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
